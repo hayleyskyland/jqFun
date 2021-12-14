@@ -1,13 +1,5 @@
-function test() {
-  alert('ok');
-}
+// shows on load, basically a build-in `onReady`
 
-test()
-
-
-
-
-// $(function() {
-//   $("body").css("background", "red");
-// });
-
+$(function() {
+  $("body").css("background", "red");
+});
