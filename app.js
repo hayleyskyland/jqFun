@@ -1,5 +1,13 @@
-// $("body").css("background", "red");
+function test() {
+  alert('ok');
+}
 
-$(function onReady() {
-    // alert
-  });
+test()
+
+
+
+
+// $(function() {
+//   $("body").css("background", "red");
+// });
+
