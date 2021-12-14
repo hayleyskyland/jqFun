@@ -8,7 +8,7 @@ $(function() {
   para.text(i+1);
 
   function toggleBox(i) {
-    box.fadeToggle(500, function() {
+    box.fadeToggle(1000, function() {
       i = i + 1;
 
       if(i < 10) {
@@ -20,3 +20,9 @@ $(function() {
   
   toggleBox(i);
 });
+
+$("p").addClass("paragraph");
+
+$("div>ul a");
+$("div#main p strong");
+$("div.main p>li a");

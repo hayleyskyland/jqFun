@@ -1,7 +1,28 @@
-#box {
-    width: 100px;
-    height: 100px;
+body {
+    font-family: Arial;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
     text-align: center;
-    background: #f00;
+}
+
+#box {
+    width: 10rem;
+    height: 6rem;
+    text-align: center;
+    background: #008080;
     font-size: 14px;
+    padding-top: 4rem;
+    color: white;
+    font-weight: bold;
+    border-radius: 1rem;
+    font-size: 2rem;
+    margin-top: 2rem;
+}
+
+.paragraph {
+    color: gray;
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: 3rem;
 }
