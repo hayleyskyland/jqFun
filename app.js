@@ -2,7 +2,6 @@
 
 $(function() {
   var box = $("#box");
-  box.fadeOut("slow", function() {
-    alert("box finished fading out");
-  });
+  var para = $("p");
+  var i = 0;
 });
