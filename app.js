@@ -3,15 +3,11 @@
 $(function() {
 
 
-
-
   //////////////////// TARGET HTML ITEMS BY ID ////////////////////
 
   const box = $('#box');
   const counter = $('#counter');
-  const traversal = $('#traversal')
-
-
+  const traversal = $('#traversal');
 
 
   //////////////////// BOX COUNTER ////////////////////
@@ -31,10 +27,7 @@ $(function() {
   };
 
 
-
-
-  //////////////////// TRAVERSAL CONSOLE LOGS ////////////////////
-
+  //////////////////// TRAVERSAL LOGS ////////////////////
 
   const countUp = () => {   
 
@@ -56,12 +49,10 @@ $(function() {
     countWithZ();
   }
 
-
   const logFirstAndLastLetters = () => {
     console.log('first letter:', $('h3:first').text())
     console.log('last letter :', $('h3:last').text())
   }
-
 
   const logChildrenAndSiblings = () => {
 
@@ -73,7 +64,6 @@ $(function() {
 
 
     const logAllWithoutZ = () => {
-      
       const allLogsMatch = () => {
         if (
           (articleLog = traverseLog)
@@ -96,53 +86,44 @@ $(function() {
 
     logAllWithoutZ();
     logAllWithZ();
-
   }
 
 
-
-
+  //////////////////// ADD STUFF ////////////////////
 
   const addStuff = () => {
 
   }
 
 
-
-
-
-
-
-  // invoke functions
+  //////////////////// INVOKE FUNCTIONS ////////////////////
 
   toggleBox(i);
 
-  // console.log('***** COUNT UP *****');
-  // countUp();
+  console.log('***** COUNT UP *****');
+  countUp();
 
-  // console.log('***** FIRST & LAST LETTERS *****');
-  // logFirstAndLastLetters();
+  console.log('***** FIRST & LAST LETTERS *****');
+  logFirstAndLastLetters();
 
-  // console.log('***** CHILDREN & SIBLINGS *****');
-  // logChildrenAndSiblings();
+  console.log('***** CHILDREN & SIBLINGS *****');
+  logChildrenAndSiblings();
 
   console.log('***** ADD STUFF *****');
   addStuff();  
 });
 
 
-
-
 //////////////////// CHANGE CSS ////////////////////
 
-// add a class to an html element (to add color in css)
+// add a class to an html element (ex: add color in css)
 
 $(counter).addClass('colorize-counter');
 
 
 
 
-//////////////////// NOTES ////////////////////
+//////////////////// NOTES FOR FOLLOW-UP ////////////////////
 
 // $('div>ul a');
 // $('div#main p strong');
