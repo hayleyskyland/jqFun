@@ -6,6 +6,7 @@ $(function() {
 
   var box = $('#box');
   var counter = $('#counter');
+  var traversal = $('#traversal')
 
   // toggle box counter
 
@@ -28,9 +29,21 @@ $(function() {
     // `.eq(#)` references one of the test `<h3>`s as if an array
 
   function traverse() {
-    console.log($('h3').eq(0).text());
-    console.log($('h3').eq(1).text());
-    console.log($('h3').eq(2).text());
+
+    // log all 3 letters
+
+    for (let i = 0; i < $('h3').length; i++) {
+      console.log('count up:', $('h3').eq(i).text());
+    }
+
+    // log info about 1st letter
+
+    console.log($('h3:first'))
+
+    // log all info about all letters
+
+    console.log((traversal).find('h3'))
+    console.log((traversal).children('h3'))
   }
 
   // invoke functions
