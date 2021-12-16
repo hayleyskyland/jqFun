@@ -36,14 +36,15 @@ $(function() {
       console.log('count up:', $('h3').eq(i).text());
     }
 
-    // log info about 1st letter
+    // log info about 1st (A) & last (C) letter
 
-    console.log($('h3:first'))
+    console.log('first letter info:', $('h3:first'))
+    console.log('last letter info:', $('h3:last'))
 
-    // log all info about all letters
+    // log all info about all letters at once
 
-    console.log((traversal).find('h3'))
-    console.log((traversal).children('h3'))
+    console.log('all letter info through find:', (traversal).find('h3'))
+    console.log('all letter info through children:', (traversal).children('h3'))
   }
 
   // invoke functions
