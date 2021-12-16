@@ -100,6 +100,8 @@ $(function() {
 
   toggleBox(i);
 
+  // traversal logs
+
   console.log('***** COUNT UP *****');
   countUp();
 
@@ -109,8 +111,11 @@ $(function() {
   console.log('***** CHILDREN & SIBLINGS *****');
   logChildrenAndSiblings();
 
+  // add stuff
+
   console.log('***** ADD STUFF *****');
   addStuff();  
+  
 });
 
 
