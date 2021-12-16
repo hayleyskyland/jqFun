@@ -36,7 +36,7 @@ $(function() {
   //////////////////// TRAVERSAL CONSOLE LOGS ////////////////////
 
 
-  function countingUp() {   
+  const countUp = () => {   
 
     const countWithoutZ = () => {
       let countThis = traversal.children();
@@ -48,6 +48,7 @@ $(function() {
 
     const countWithZ = () => {
       let countWithZ = $('h3');
+
       console.log('count up line 2:', countWithZ.eq(3).text());
     }
 
@@ -62,44 +63,53 @@ $(function() {
   }
 
 
-  function logChildrenAndSiblings() {
+  const logChildrenAndSiblings = () => {
 
-    let articleLog = $('article h3').text()
-    let traverseLog = traversal.children('h3').text()
-    let nextLog = $('h3:first').nextAll().andSelf().text()
-    let findLog = (traversal).find('h3')
-    // let siblingLog = $('h3').siblings().text()
+    let articleLog = $('article h3').text();
+    let traverseLog = traversal.children('h3').text();
+    let nextLog = $('h3:first').nextAll().andSelf().text();
+    let findLog = (traversal).find('h3');
+    let siblingLog = $('h3:first').siblings().andSelf().text();
 
-    // console.log('all letter info via `article h3`', articleLog)
-    // console.log('all letter info via `children`:', traverseLog)
-    // console.log('all letter info via `next`:', nextLog)
-    // console.log('all letter info via `siblings`:', siblingLog)    
-    
-    const allLogsMatch = () => {
-      if (
-        (articleLog = traverseLog)
-        // && (articleLog = siblingLog)
-        && (articleLog = nextLog)
-        && (articleLog = findLog)
-      ) {
-        console.log('success: all logs match')
+
+    const logAllWithoutZ = () => {
+      
+      const allLogsMatch = () => {
+        if (
+          (articleLog = traverseLog)
+          && (articleLog = nextLog)
+          && (articleLog = findLog)
+          && (articleLog = siblingLog)
+        ) {
+          return 'all logs match';
+        }
       }
+
+      console.log('log line 1:', articleLog, '-', allLogsMatch())
     }
 
-    allLogsMatch();
+    const logAllWithZ = () => {
+      let articleLog = $('h3').text();
+
+      console.log('log lines 1 & 2:', articleLog)
+    }
+
+    logAllWithoutZ();
+    logAllWithZ();
+
   }
   
   // invoke functions
 
   toggleBox(i);
 
-  console.log('***** COUNT UP *****')
-  countingUp();
+  console.log('***** COUNT UP *****');
+  countUp();
 
-  console.log('***** LOG FIRST & LAST LETTERS *****')  
+  console.log('***** FIRST & LAST LETTERS *****');
   logFirstAndLastLetters();
 
-  console.log('***** LOG CHILDREN & SIBLINGS *****')   
+  console.log('***** CHILDREN & SIBLINGS *****');
   logChildrenAndSiblings();
 });
 
