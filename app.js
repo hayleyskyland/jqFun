@@ -38,13 +38,36 @@ $(function() {
 
     // log info about 1st (A) & last (C) letter
 
-    console.log('first letter info:', $('h3:first'))
-    console.log('last letter info:', $('h3:last'))
+    // console.log('first letter info:', $('h3:first'))
+    // console.log('last letter info:', $('h3:last'))
 
-    // log all info about all letters at once
+    let articleLog = $('article h3')
+    let traverseLog = (traversal).children('h3')
+    let siblingLog = $('h3').siblings().andSelf() 
+    let findLog = (traversal).find('h3')
+    let findBody = $('#body').find('h3')
 
-    console.log('all letter info through find:', (traversal).find('h3'))
-    console.log('all letter info through children:', (traversal).children('h3'))
+    //target just inside `traversal` article
+
+    // console.log('all letter info via `article h3`', articleLog)
+    // console.log('all letter info via `children`:', traverseLog)
+    // console.log('all letter info via `siblings`:', siblingLog)
+
+    // supposed to target whole dom, but it's just targetting `traversal` article
+    // console.log('all letter info via `find`:', findLog) 
+
+    // ^^ this one searches whole dom though? incorrectly showing up same result
+
+    if ((articleLog = traverseLog) && (articleLog = siblingLog) && (articleLog = findLog)) {
+      console.log('all traversal logs are the same')
+    }
+
+    if (findLog = findBody) {
+      console.log('fail')
+    }      
+
+    // search whole dom for h3s
+    // console.log('all letter info via `find`:', findLog)    
   }
 
   // invoke functions

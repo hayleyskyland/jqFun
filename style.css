@@ -43,10 +43,11 @@ body {
     display: flex;
     flex-direction: row;
     text-align: center;
-    margin-top: -3rem;
-    color: olivedrab;
+    margin-top: -1rem;
 }
 
 #letter {
     padding: .3rem;
+    color: olivedrab;
+    margin: .1rem;
 }
