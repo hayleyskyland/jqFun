@@ -98,19 +98,36 @@ $(function() {
     logAllWithZ();
 
   }
-  
+
+
+
+
+
+  const addStuff = () => {
+
+  }
+
+
+
+
+
+
+
   // invoke functions
 
   toggleBox(i);
 
-  console.log('***** COUNT UP *****');
-  countUp();
+  // console.log('***** COUNT UP *****');
+  // countUp();
 
-  console.log('***** FIRST & LAST LETTERS *****');
-  logFirstAndLastLetters();
+  // console.log('***** FIRST & LAST LETTERS *****');
+  // logFirstAndLastLetters();
 
-  console.log('***** CHILDREN & SIBLINGS *****');
-  logChildrenAndSiblings();
+  // console.log('***** CHILDREN & SIBLINGS *****');
+  // logChildrenAndSiblings();
+
+  console.log('***** ADD STUFF *****');
+  addStuff();  
 });
 
 
