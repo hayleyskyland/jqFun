@@ -9,7 +9,6 @@ $(function() {
   const counter = $('#counter');
   const traversal = $('#traversal');
 
-
   //////////////////// BOX COUNTER ////////////////////
 
   let i = 0;
@@ -121,9 +120,34 @@ $(function() {
 
 //////////////////// CHANGE CSS ////////////////////
 
-// add a class to an html element (ex: add color in css)
+$(function(){
+  $('#orangeBtn').click(function() {
+    $('h3').css('color', 'orange');
+    $('#orangeBtn').addClass('hidden');
+    $('#greenBtn').removeClass('hidden');
+    $('#pinkBtn').removeClass('hidden');
+  });
+});
 
-$(counter).addClass('colorize-counter');
+$(function(){
+  $('#pinkBtn').click(function() {
+    $('h3').css('color', 'lightpink');
+    $('#pinkBtn').addClass('hidden');
+    $('#greenBtn').removeClass('hidden');
+    $('#orangeBtn').removeClass('hidden');
+  });
+});
+
+$(function(){
+  $('#greenBtn').click(function() {
+    $('h3').css('color', 'olivedrab');
+    $('#greenBtn').addClass('hidden');
+    $('#pinkBtn').removeClass('hidden');
+    $('#orangeBtn').removeClass('hidden');
+  });
+});
+
+
 
 
 
