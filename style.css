@@ -51,3 +51,19 @@ body {
     color: olivedrab;
     margin: .1rem;
 }
+
+/* buttons */
+
+button {
+    background-color: gray;
+    border: 0;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    color: white;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #008080;
+}
