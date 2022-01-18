@@ -11,14 +11,14 @@ $(function() {
   //////////////////// BOX COUNTER ////////////////////
 
   let i = 0;
-  counter.text(i+1);
+  counter.text('Fadetoggle: ' + (i+1));
 
   const toggleBox = (i) => {
     box.fadeToggle(1500, function() {
       i = i + 1;   
 
       if(i < 4) {
-        counter.text(i+1);
+        counter.text('Fadetoggles: ' + (i+1));
         toggleBox(i);
       }
     });
@@ -123,6 +123,8 @@ $(function() {
 
 //////////////////// CHANGE CSS ////////////////////
 
+// orange button
+
 $(function(){
   $('#orangeBtn').click(function() {
     $('h3').css('color', 'orange');
@@ -131,6 +133,16 @@ $(function(){
     $('#pinkBtn').show();
   });
 });
+
+$(function(){
+  $('#orangeBtn').on('mouseenter', function() {
+    $('#orangeBtn').css('transform', 'scale(1.5)');
+  }).on('mouseleave', function() {
+    $('#orangeBtn').css('transform', 'none');
+  })
+});
+
+// pink button
 
 $(function(){
   $('#pinkBtn').click(function() {
@@ -142,6 +154,14 @@ $(function(){
 });
 
 $(function(){
+  $('#pinkBtn').on('mouseenter', function() {
+    $('#pinkBtn').css('transform', 'scale(1.5)');
+  }).on('mouseleave', function() {
+    $('#pinkBtn').css('transform', 'none');
+  })
+});
+
+$(function(){
   $('#greenBtn').click(function() {
     $('h3').css('color', 'olivedrab');
     $('#greenBtn').hide();
@@ -150,19 +170,38 @@ $(function(){
   });
 });
 
+$(function(){
+  $('#greenBtn').on('mouseenter', function() {
+    $('#greenBtn').css('transform', 'scale(1.5)');
+  }).on('mouseleave', function() {
+    $('#greenBtn').css('transform', 'none');
+  })
+});
+
+// fog
+
+$('#fogBtn').animate({
+  'width': 200
+}, 4000);
 
 $(function(){
   $('#fogBtn').click(function() {
     $('body').addClass('fog');
-    $('#fogBtn').hide()
+    $('#fogBtn').hide();
   });
 });
 
 
 
 
-//////////////////// NOTES FOR FOLLOW-UP ////////////////////
+//////////////////// EVENTS ////////////////////
 
-// $('div>ul a');
-// $('div#main p strong');
-// $('div.main p>li a');
+
+$(function() {
+  $('div').on('click', function(event) {
+    alert('Your mouse is at X ' + event.pageX + ' & Y ' + event.pageY + '.');
+  });
+});
+
+
+
