@@ -24,7 +24,6 @@ $(function() {
     });
   };
 
-
   //////////////////// TRAVERSAL LOGS ////////////////////
 
   const countUp = () => {   
@@ -60,7 +59,6 @@ $(function() {
     let findLog = (traversal).find('h3');
     let siblingLog = $('h3:first').siblings().andSelf().text();
 
-
     const logAllWithoutZ = () => {
       const allLogsMatch = () => {
         if (
@@ -86,14 +84,6 @@ $(function() {
     logAllWithZ();
   }
 
-
-  //////////////////// ADD STUFF ////////////////////
-
-  const addStuff = () => {
-
-  }
-
-
   //////////////////// INVOKE FUNCTIONS ////////////////////
 
   toggleBox(i);
@@ -109,17 +99,11 @@ $(function() {
   console.log('***** CHILDREN & SIBLINGS *****');
   logChildrenAndSiblings();
 
-  // add stuff
-
-  console.log('***** ADD STUFF *****');
-  addStuff();  
-
   // for change css code
 
   $('#greenBtn').hide();
   
 });
-
 
 //////////////////// CHANGE CSS ////////////////////
 
@@ -161,6 +145,8 @@ $(function(){
   })
 });
 
+// green button
+
 $(function(){
   $('#greenBtn').click(function() {
     $('h3').css('color', 'olivedrab');
@@ -178,7 +164,7 @@ $(function(){
   })
 });
 
-// fog
+// fog button
 
 $('#fogBtn').animate({
   'width': 200
@@ -191,17 +177,14 @@ $(function(){
   });
 });
 
-
-
-
 //////////////////// EVENTS ////////////////////
 
+// mouse coordinates
 
 $(function() {
-  $('div').on('click', function(event) {
+  $('#box').on('click', function(event) {
     alert('Your mouse is at X ' + event.pageX + ' & Y ' + event.pageY + '.');
   });
 });
 
-
-
+// collapse/expand accordian
