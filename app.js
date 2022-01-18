@@ -2,7 +2,6 @@
 
 $(function() {
 
-
   //////////////////// TARGET HTML ITEMS BY ID ////////////////////
 
   const box = $('#box');
@@ -114,6 +113,10 @@ $(function() {
 
   console.log('***** ADD STUFF *****');
   addStuff();  
+
+  // for change css code
+
+  $('#greenBtn').hide();
   
 });
 
@@ -123,31 +126,57 @@ $(function() {
 $(function(){
   $('#orangeBtn').click(function() {
     $('h3').css('color', 'orange');
-    $('#orangeBtn').addClass('hidden');
-    $('#greenBtn').removeClass('hidden');
-    $('#pinkBtn').removeClass('hidden');
+    // $('#orangeBtn').addClass('hidden');
+    // $('#greenBtn').removeClass('hidden');
+    // $('#pinkBtn').removeClass('hidden');
+    $('#orangeBtn').hide();
+    $('#greenBtn').show();
+    $('#pinkBtn').show();
   });
 });
 
 $(function(){
   $('#pinkBtn').click(function() {
     $('h3').css('color', 'lightpink');
-    $('#pinkBtn').addClass('hidden');
-    $('#greenBtn').removeClass('hidden');
-    $('#orangeBtn').removeClass('hidden');
+    // $('#pinkBtn').addClass('hidden');
+    // $('#greenBtn').removeClass('hidden');
+    // $('#orangeBtn').removeClass('hidden');
+    $('#pinkBtn').hide();
+    $('#greenBtn').show();
+    $('#orangeBtn').show();
   });
 });
 
 $(function(){
   $('#greenBtn').click(function() {
     $('h3').css('color', 'olivedrab');
-    $('#greenBtn').addClass('hidden');
-    $('#pinkBtn').removeClass('hidden');
-    $('#orangeBtn').removeClass('hidden');
+    // $('#greenBtn').addClass('hidden');
+    // $('#pinkBtn').removeClass('hidden');
+    // $('#orangeBtn').removeClass('hidden');
+    $('#greenBtn').hide();
+    $('#pinkBtn').show();
+    $('#orangeBtn').show();
   });
 });
 
+$(function(){
+  $('#greenBtn').click(function() {
+    $('h3').css('color', 'olivedrab');
+    // $('#greenBtn').addClass('hidden');
+    // $('#pinkBtn').removeClass('hidden');
+    // $('#orangeBtn').removeClass('hidden');
+    $('#greenBtn').hide();
+    $('#pinkBtn').show();
+    $('#orangeBtn').show();
+  });
+});
 
+$(function(){
+  $('#fogBtn').click(function() {
+    $('body').addClass('fog');
+    $('#fogBtn').hide()
+  });
+});
 
 
 
