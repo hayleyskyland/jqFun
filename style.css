@@ -53,8 +53,7 @@ body {
     margin: .1rem;
 }
 
-/* buttons */
-
+/* color buttons */
 
 button {
     background-color: lightgray;
@@ -84,6 +83,16 @@ button {
     background-color: orange;
 }
 
+/* fog */
+
 .fog {
     background-color: #f1f1f1;
+    opacity: 0.5;
 }
+
+/* paragraphs */
+
+#paragraphs {
+    margin-top: 2.5rem;
+}
+

@@ -99,9 +99,10 @@ $(function() {
   console.log('***** CHILDREN & SIBLINGS *****');
   logChildrenAndSiblings();
 
-  // for change css code
+  // hidden buttons for change css code
 
   $('#greenBtn').hide();
+  $('#unfogBtn').hide();
   
 });
 
@@ -164,9 +165,13 @@ $(function(){
   })
 });
 
-// fog button
+// fog
 
 $('#fogBtn').animate({
+  'width': 200
+}, 4000);
+
+$('#unfogBtn').animate({
   'width': 200
 }, 4000);
 
@@ -174,6 +179,15 @@ $(function(){
   $('#fogBtn').click(function() {
     $('body').addClass('fog');
     $('#fogBtn').hide();
+    $('#unfogBtn').show();
+  });
+});
+
+$(function(){
+  $('#unfogBtn').click(function() {
+    $('body').removeClass('fog');
+    $('#fogBtn').show();
+    $('#unfogBtn').hide();
   });
 });
 
