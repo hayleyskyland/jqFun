@@ -6,6 +6,13 @@ body {
     display: flex;
     flex-direction: column;
     text-align: center;
+    color: gray; 
+}
+
+/* heading */
+
+h1 {
+    margin-bottom: 0;
 }
 
 /* hello world box */
@@ -27,15 +34,10 @@ body {
 /* hello world box counter */
 
 #counter {
-    color: gray;
     margin-top: 1rem;
     font-weight: bold;
-    /* font-size: 3rem; */
+    font-size: 1rem;
     margin-bottom: 1.5rem;
-}
-
-.colorize-counter {
-    color: gray;
 }
 
 /* A-C traversal log */
@@ -100,7 +102,6 @@ button {
 p {
     margin-top: 5rem;
     margin: 0.5rem;
-    color: gray;
 }
 
 #p5 {

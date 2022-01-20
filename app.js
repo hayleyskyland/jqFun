@@ -206,22 +206,31 @@ $(function() {
 // events
 
 $(function() {
-  $('#p1').on('click', function() {
-    alert('You clicked paragraph 1.');
-  });
-  $('#p3').on('click', function() {
-    alert('You clicked paragraph 3.');
-  });
-  $('#p5').on('click', function() {
-    alert('You clicked paragraph 5.');
+
+  // above paragraphs
+
+  $('#counter').on('click', function(event) {
+    alert('This line counts how many times the above box fades.');
+    event.stopPropagation();
   });
   $('h3').on('click', function() {
     alert('Check console to see examples of traversing the dom.');
   });
-  $('#counter').on('click', function() {
-    alert('This line counts how many times the above box fades.');
+
+  // paragraphs
+
+  $('#p1').on('click', function(event) {
+    alert('You clicked paragraph 1.');
+    event.stopPropagation();
+  });
+  $('#p3').on('click', function(event) {
+    alert('You clicked paragraph 3.');
+    event.stopPropagation();
+  });
+  $('p').on('click', function() {
+    alert('stopPropagation should prevent this from displaying.');
   });
   $('<p />', {
-    text: 'Paragraph 6'
+    text: 'Paragraph 4 (no clicky)'
   }).appendTo('body');
 }); 
