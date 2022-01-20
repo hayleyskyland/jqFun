@@ -206,8 +206,20 @@ $(function() {
 // events
 
 $(function() {
-  $('body').on('click', 'p', function() {
-    alert('Hello World');
+  $('#p1').on('click', function() {
+    alert('You clicked paragraph 1.');
+  });
+  $('#p3').on('click', function() {
+    alert('You clicked paragraph 3.');
+  });
+  $('#p5').on('click', function() {
+    alert('You clicked paragraph 5.');
+  });
+  $('h3').on('click', function() {
+    alert('Check console to see examples of traversing the dom.');
+  });
+  $('#counter').on('click', function() {
+    alert('This line counts how many times the above box fades.');
   });
   $('<p />', {
     text: 'Paragraph 6'

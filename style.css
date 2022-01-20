@@ -31,7 +31,7 @@ body {
     margin-top: 1rem;
     font-weight: bold;
     /* font-size: 3rem; */
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
 }
 
 .colorize-counter {
@@ -44,7 +44,7 @@ article {
     display: flex;
     flex-direction: row;
     text-align: center;
-    margin-top: -1rem;
+    margin-top: 0rem;
 }
 
 #letter {
@@ -90,18 +90,19 @@ button {
     opacity: 0.5;
 }
 
-#fogBtn {
-    margin-bottom: 2rem;
+#fogBtn,
+#unfogBtn {
+    margin-bottom: 1.5rem;
 }
 
 /* paragraphs */
-
-#p5 {
-    margin-bottom: 0;
-}
 
 p {
     margin-top: 5rem;
     margin: 0.5rem;
     color: gray;
+}
+
+#p5 {
+    margin-bottom: 0;
 }
