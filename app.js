@@ -201,4 +201,15 @@ $(function() {
   });
 });
 
-// collapse/expand accordian
+// collapse/expand accordian (come back to this)
+
+// events
+
+$(function() {
+  $('body').on('click', 'p', function() {
+    alert('Hello World');
+  });
+  $('<p />', {
+    text: 'Paragraph 6'
+  }).appendTo('body');
+});

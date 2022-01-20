@@ -40,7 +40,7 @@ body {
 
 /* A-C traversal log */
 
-#traversal {
+article {
     display: flex;
     flex-direction: row;
     text-align: center;
@@ -90,9 +90,18 @@ button {
     opacity: 0.5;
 }
 
-/* paragraphs */
-
-#paragraphs {
-    margin-top: 2.5rem;
+#fogBtn {
+    margin-bottom: 2rem;
 }
 
+/* paragraphs */
+
+#p5 {
+    margin-bottom: 0;
+}
+
+p {
+    margin-top: 5rem;
+    margin: 0.5rem;
+    color: gray;
+}
