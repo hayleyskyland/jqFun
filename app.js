@@ -103,7 +103,7 @@ $(function() {
 
   $('#greenBtn').hide();
   $('#unfogBtn').hide();
-  
+  $('#dayLink').hide(); 
 });
 
 //////////////////// CHANGE CSS ////////////////////
@@ -203,7 +203,7 @@ $(function() {
 
 // collapse/expand accordian (come back to this)
 
-// events
+// click events
 
 $(function() {
 
@@ -223,10 +223,6 @@ $(function() {
     alert('You clicked paragraph 1.');
     event.stopPropagation();
   });
-  $('#p3').on('click', function(event) {
-    alert('You clicked paragraph 3.');
-    event.stopPropagation();
-  });
 
   $('p').on('click', 'p', function() {
     alert('stopPropagation should prevent this from displaying.');
@@ -235,8 +231,26 @@ $(function() {
   // add paragraph
 
   $('<p />', {
-    text: 'Paragraph 4 (no clicky)'
-  }).appendTo('body');
-
-
+    text: 'Paragraph 3 (no clicky)'
+  }).appendTo('#paragraphs');
 }); 
+
+// prevent default behaviors on click
+
+$(function() {
+  $('#nightLink').on('click', function(event) {
+    event.preventDefault();
+    $('body').css('background', 'black');
+    $('#nightLink').hide();
+    $('#dayLink').show();
+  });
+});
+
+$(function() {
+  $('#dayLink').on('click', function(event) {
+    event.preventDefault();
+    $('body').css('background', 'white');
+    $('#dayLink').hide();
+    $('#nightLink').show();
+  });
+});

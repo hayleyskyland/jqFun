@@ -18,9 +18,9 @@ h1 {
 /* hello world box */
 
 #box {
-    width: 10rem;
+    width: 15rem;
     height: 5.5rem;
-    padding-top: 4.5rem;
+    padding-top: 4rem;
     text-align: center;
     background: #008080;
     font-size: 14px;
@@ -104,6 +104,10 @@ p {
     margin: 0.5rem;
 }
 
-#p5 {
-    margin-bottom: 0;
+#paragraphs {
+    margin-bottom: 0.5rem;
+}
+
+#dayLink {
+    margin-top: -30rem;
 }
