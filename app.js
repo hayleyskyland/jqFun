@@ -217,20 +217,26 @@ $(function() {
     alert('Check console to see examples of traversing the dom.');
   });
 
-  // paragraphs
+  // paragraph click alerts
 
-  $('#p1').on('click', function(event) {
+  $('#p1').on('click', 'p', function(event) {
     alert('You clicked paragraph 1.');
     event.stopPropagation();
   });
-  $('#p3').on('click', function(event) {
+  $('#p3').on('click', 'p', function(event) {
     alert('You clicked paragraph 3.');
     event.stopPropagation();
   });
+
   $('p').on('click', function() {
     alert('stopPropagation should prevent this from displaying.');
   });
+
+  // add paragraph
+
   $('<p />', {
     text: 'Paragraph 4 (no clicky)'
   }).appendTo('body');
+
+
 }); 
