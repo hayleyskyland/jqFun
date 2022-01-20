@@ -224,4 +224,4 @@ $(function() {
   $('<p />', {
     text: 'Paragraph 6'
   }).appendTo('body');
-}); 
+});
