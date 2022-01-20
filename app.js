@@ -219,16 +219,16 @@ $(function() {
 
   // paragraph click alerts
 
-  $('#p1').on('click', 'p', function(event) {
+  $('#p1').on('click', function(event) {
     alert('You clicked paragraph 1.');
     event.stopPropagation();
   });
-  $('#p3').on('click', 'p', function(event) {
+  $('#p3').on('click', function(event) {
     alert('You clicked paragraph 3.');
     event.stopPropagation();
   });
 
-  $('p').on('click', function() {
+  $('p').on('click', 'p', function() {
     alert('stopPropagation should prevent this from displaying.');
   });
 
