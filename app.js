@@ -241,6 +241,9 @@ $(function() {
   $('#nightLink').on('click', function(event) {
     event.preventDefault();
     $('body').css('background', 'black');
+    $('#fogBtn').css('color', 'black');
+    $('#unfogBtn').css('color', 'black');
+    $('#box').css('color', 'black');
     $('#nightLink').hide();
     $('#dayLink').show();
   });
@@ -250,6 +253,9 @@ $(function() {
   $('#dayLink').on('click', function(event) {
     event.preventDefault();
     $('body').css('background', 'white');
+    $('#fogBtn').css('color', 'white');
+    $('#unfogBtn').css('color', 'white');
+    $('#box').css('color', 'white');
     $('#dayLink').hide();
     $('#nightLink').show();
   });
