@@ -220,7 +220,7 @@ $(function() {
   // paragraph click alerts
 
   $('#p1').on('click', function(event) {
-    alert('You clicked paragraph 1.');
+    alert('You clicked Paragraph 1.');
     event.stopPropagation();
   });
 
@@ -230,10 +230,17 @@ $(function() {
 
   // add paragraph
 
-  $('<p />', {
-    text: 'Paragraph 3 (no clicky)'
+  $(('<p />'), {
+    text: 'Paragraph 3 (click me)',
+    id: 'p3'
   }).appendTo('#paragraphs');
+
+  $('p:nth-child(3)').on('click', function() {
+    alert('You clicked Paragraph 3.');
+  });
+
 }); 
+
 
 // prevent default behaviors on click
 
