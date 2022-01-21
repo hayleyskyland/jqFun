@@ -118,17 +118,12 @@ a {
 /* day night toggle */
 
 #moon,
-#sun,
-#rainbow {
+#sun {
     width: 2rem;
     height: 2rem;
     margin: 0 0.5rem 0 0.5rem;
     position: absolute;
     top: 10px;
-}
-
-#rainbow {
-    left: 10px;
 }
 
 #moon,

@@ -19,7 +19,6 @@ const unfogBtn = $('#unfogBtn');
 
 const sunBtn = $('#dayLink')
 const moonBtn = $('#nightLink');
-const rainbowBtn = $('#rainbowLink');
 
 //////////////////// HELPER FUNCTIONS ////////////////////
 
@@ -32,6 +31,12 @@ const hide = (elements) => {
 const show = (elements) => {
   elements.forEach(element => {
     element.show();
+  });
+};
+
+const setColor = (elements, colorVar) => {
+  elements.forEach(element => {
+    element.css('color', colorVar)
   });
 };
 
@@ -189,21 +194,19 @@ $(function() {
 
 $(function() {
 
-  const hoverColorBtns = () => {
-    const hoverHere = (btn) => {
-      btn.on('mouseenter', function() {
-        btn.css('transform', 'scale(1.5)');
-      }).on('mouseleave', function() {
-        btn.css('transform', 'none');
-      })
+  $(function(){
+    const hoverHere = (elements) => {
+      elements.forEach(btn => {
+        btn.on('mouseenter', function() {
+          btn.css('transform', 'scale(1.5)');
+        }).on('mouseleave', function() {
+          btn.css('transform', 'none');
+        });
+      });
     };
 
-    hoverHere(orangeBtn);
-    hoverHere(pinkBtn);
-    hoverHere(greenBtn);
-  };
-
-  hoverColorBtns();
+    hoverHere([orangeBtn, pinkBtn, greenBtn]);
+  });
 
   $(function(){
     orangeBtn.click(function() {
@@ -215,7 +218,7 @@ $(function() {
 
   $(function(){
     pinkBtn.click(function() {
-      h3.css('color', 'lightpink');
+      setColor([h3], 'lightpink');
       hide([pinkBtn]);
       show([greenBtn, orangeBtn]);
     });
@@ -223,7 +226,7 @@ $(function() {
 
   $(function(){
     greenBtn.click(function() {
-      h3.css('color', 'olivedrab');
+      setColor([h3], 'olivedrab');
       hide([greenBtn]);
       show([pinkBtn, orangeBtn]);
     });
@@ -233,14 +236,18 @@ $(function() {
 // fog buttons
 
 $(function() {
-  const animateFogBtn = (btn) => {
-    btn.animate({
-      'width': 200
-    }, 4000);
+
+  const animateFogBtn = (elements) => {
+    elements.forEach(btn => {
+      btn.on('mouseenter', function() {
+        btn.css('transform', 'scale(1.5)');
+      }).on('mouseleave', function() {
+        btn.css('transform', 'none');
+      });
+    });
   };
 
-  animateFogBtn(fogBtn);
-  animateFogBtn(unfogBtn);
+  animateFogBtn([fogBtn, unfogBtn])
 
   $(function(){
     fogBtn.click(function() {
@@ -259,72 +266,36 @@ $(function() {
   });
 });
 
-// whole page themes
+// day & night toggle
 
 $(function() {
 
-  // day & night toggle
-
-  const setWhite = (element) => {
-    element.css('color', 'white')
-  };
-
-  const setBlack = (element) => {
-    element.css('color', 'black')
-  };
-
-  const setDayTextColors = () => {
-    setWhite(fogBtn);
-    setWhite(unfogBtn);
-    setWhite(box);
-    body.css('color', 'gray');
-  };
-
-  const setNightTextColors = () => {
-    setBlack(fogBtn);
-    setBlack(unfogBtn);
-    setBlack(box);
-  };
-
   $(function() {
-    $(function() {
-      moonBtn.on('click', function(event) {
-        event.preventDefault();
-        setNightTextColors();
-        body.css('background', 'black');
-        hide([moonBtn]);
-        show([sunBtn, rainbowBtn]);
-      });
+    sunBtn.on('click', function(event) {
+      event.preventDefault();
+      body.trigger('setDayMode');
     });
 
-    $(function() {
-      sunBtn.on('click', function(event) {
-        event.preventDefault();
-        setDayTextColors();
-        body.css('background', 'white');
-        hide([sunBtn]);
-        show([moonBtn, rainbowBtn]);
-      });
+    body.on('setDayMode', function() {
+      $(this).css('background', 'white');
+      setColor([$(this)], 'gray');
+      setColor([fogBtn, unfogBtn, box], 'white');
+      hide([sunBtn]);
+      show([moonBtn]);
     });
   });
 
-  // rainbow button
-
   $(function() {
-    rainbowBtn.on('click', function(event) {
+    moonBtn.on('click', function(event) {
       event.preventDefault();
-      body.trigger('rainbowChange');
-      hide([rainbowBtn, sunBtn]);
-      show([moonBtn]);
+      body.trigger('setNightMode');
     });
 
-    body.on('rainbowChange', function() {
-      $(this).css(
-        'background',
-        'linear-gradient(red, orange, yellow, green, blue, indigo, violet, red)'
-      );
-      setDayTextColors();
-      setWhite($(this));
+    body.on('setNightMode', function() {
+      $(this).css('background', 'black');
+      setColor([fogBtn, unfogBtn, box], 'black');
+      hide([moonBtn]);
+      show([sunBtn]);
     });
   });
 });
