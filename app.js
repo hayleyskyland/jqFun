@@ -1,14 +1,34 @@
+//////////////////// TARGET HTML ITEMS BY ID ////////////////////
+// basically querySelector
+
+const box = $('#box');
+const counter = $('#counter');
+const traversal = $('#traversal');
+const h3 = $('h3');
+
+const orangeBtn = $('#orangeBtn');
+const greenBtn = $('#greenBtn');
+const pinkBtn = $('#pinkBtn');
+
+const fogBtn = $('#fogBtn');
+const unfogBtn = $('#unfogBtn');
+
+const sunBtn = $('#dayLink')
+const moonBtn = $('#nightLink');
+const rainbowBtn = $('#rainbowLink');
+
+//////////////////// LOAD FUNCTION ////////////////////
 // this 1st function is invoked on load, basically a build-in `onReady`
 
 $(function() {
 
-  //////////////////// TARGET HTML ITEMS BY ID ////////////////////
+  // hide buttons
 
-  const box = $('#box');
-  const counter = $('#counter');
-  const traversal = $('#traversal');
+  greenBtn.hide();
+  unfogBtn.hide();
+  sunBtn.hide(); 
 
-  //////////////////// BOX COUNTER ////////////////////
+  // box counter
 
   let i = 0;
   counter.text('Fadetoggle: ' + (i+1));
@@ -24,87 +44,85 @@ $(function() {
     });
   };
 
-  //////////////////// TRAVERSAL LOGS ////////////////////
+  // traversal logs
 
-  const countUp = () => {   
+  const logs = () => {
 
-    const countWithoutZ = () => {
-      let countThis = traversal.children();
+    const countUp = () => {   
 
-      for (let i = 0; i < countThis.length; i++) {
-        console.log('count up line 1:', countThis.eq(i).text());
-      }
-    }
+      const countWithoutZ = () => {
+        let countThis = traversal.children();
 
-    const countWithZ = () => {
-      let countWithZ = $('h3');
-
-      console.log('count up line 2:', countWithZ.eq(3).text());
-    }
-
-    countWithoutZ();
-    countWithZ();
-  }
-
-  const logFirstAndLastLetters = () => {
-    console.log('first letter:', $('h3:first').text())
-    console.log('last letter :', $('h3:last').text())
-  }
-
-  const logChildrenAndSiblings = () => {
-
-    let articleLog = $('article h3').text();
-    let traverseLog = traversal.children('h3').text();
-    let nextLog = $('h3:first').nextAll().andSelf().text();
-    let findLog = (traversal).find('h3');
-    let siblingLog = $('h3:first').siblings().andSelf().text();
-
-    const logAllWithoutZ = () => {
-      const allLogsMatch = () => {
-        if (
-          (articleLog = traverseLog)
-          && (articleLog = nextLog)
-          && (articleLog = findLog)
-          && (articleLog = siblingLog)
-        ) {
-          return 'all logs match';
+        for (let i = 0; i < countThis.length; i++) {
+          console.log('count up line 1:', countThis.eq(i).text());
         }
       }
 
-      console.log('log line 1:', articleLog, '-', allLogsMatch())
+      const countWithZ = () => {
+        let countWithZ = h3;
+
+        console.log('count up line 2:', countWithZ.eq(3).text());
+      }
+
+      countWithoutZ();
+      countWithZ();
     }
 
-    const logAllWithZ = () => {
-      let articleLog = $('h3').text();
-
-      console.log('log lines 1 & 2:', articleLog)
+    const logFirstAndLastLetters = () => {
+      console.log('first letter:', $('h3:first').text())
+      console.log('last letter :', $('h3:last').text())
     }
 
-    logAllWithoutZ();
-    logAllWithZ();
+    const logChildrenAndSiblings = () => {
+
+      let articleLog = $('article h3').text();
+      let traverseLog = traversal.children('h3').text();
+      let nextLog = $('h3:first').nextAll().andSelf().text();
+      let findLog = (traversal).find('h3');
+      let siblingLog = $('h3:first').siblings().andSelf().text();
+
+      const logAllWithoutZ = () => {
+        const allLogsMatch = () => {
+          if (
+            (articleLog = traverseLog)
+            && (articleLog = nextLog)
+            && (articleLog = findLog)
+            && (articleLog = siblingLog)
+          ) {
+            return 'all logs match';
+          }
+        }
+
+        console.log('log line 1:', articleLog, '-', allLogsMatch())
+      }
+
+      const logAllWithZ = () => {
+        let articleLog = h3.text();
+
+        console.log('log lines 1 & 2:', articleLog)
+      }
+
+      logAllWithoutZ();
+      logAllWithZ();
+    }
+
+    //////////////////// INVOKE FUNCTIONS ////////////////////
+
+    toggleBox(i);
+
+    // traversal logs
+
+    console.log('***** COUNT UP *****');
+    countUp();
+
+    console.log('***** FIRST & LAST LETTERS *****');
+    logFirstAndLastLetters();
+
+    console.log('***** CHILDREN & SIBLINGS *****');
+    logChildrenAndSiblings();
   }
 
-  //////////////////// INVOKE FUNCTIONS ////////////////////
-
-  toggleBox(i);
-
-  // traversal logs
-
-  console.log('***** COUNT UP *****');
-  countUp();
-
-  console.log('***** FIRST & LAST LETTERS *****');
-  logFirstAndLastLetters();
-
-  console.log('***** CHILDREN & SIBLINGS *****');
-  logChildrenAndSiblings();
-
-  // hidden buttons for change css code
-
-  $('#greenBtn').hide();
-  $('#unfogBtn').hide();
-  $('#dayLink').hide(); 
-  $('#bwLink').hide();
+  logs();
 });
 
 //////////////////// CHANGE CSS ////////////////////
@@ -112,83 +130,84 @@ $(function() {
 // orange button
 
 $(function(){
-  $('#orangeBtn').click(function() {
-    $('h3').css('color', 'orange');
-    $('#orangeBtn').hide();
-    $('#greenBtn').show();
-    $('#pinkBtn').show();
+  orangeBtn.click(function() {
+    h3.css('color', 'orange');
+    orangeBtn.hide();
+    greenBtn.show();
+    pinkBtn.show();
   });
 });
 
 $(function(){
-  $('#orangeBtn').on('mouseenter', function() {
-    $('#orangeBtn').css('transform', 'scale(1.5)');
+  orangeBtn.on('mouseenter', function() {
+    orangeBtn.css('transform', 'scale(1.5)');
   }).on('mouseleave', function() {
-    $('#orangeBtn').css('transform', 'none');
+    orangeBtn.css('transform', 'none');
   })
 });
 
 // pink button
 
 $(function(){
-  $('#pinkBtn').click(function() {
-    $('h3').css('color', 'lightpink');
-    $('#pinkBtn').hide();
-    $('#greenBtn').show();
-    $('#orangeBtn').show();
+  pinkBtn.click(function() {
+    h3.css('color', 'lightpink');
+    pinkBtn.hide();
+    greenBtn.show();
+    orangeBtn.show();
   });
 });
 
 $(function(){
-  $('#pinkBtn').on('mouseenter', function() {
-    $('#pinkBtn').css('transform', 'scale(1.5)');
+  pinkBtn.on('mouseenter', function() {
+    pinkBtn.css('transform', 'scale(1.5)');
   }).on('mouseleave', function() {
-    $('#pinkBtn').css('transform', 'none');
+    pinkBtn.css('transform', 'none');
   })
 });
 
 // green button
 
 $(function(){
-  $('#greenBtn').click(function() {
-    $('h3').css('color', 'olivedrab');
-    $('#greenBtn').hide();
-    $('#pinkBtn').show();
-    $('#orangeBtn').show();
+  greenBtn.click(function() {
+    h3.css('color', 'olivedrab');
+    greenBtn.hide();
+    pinkBtn.show();
+    orangeBtn.show();
   });
 });
 
 $(function(){
-  $('#greenBtn').on('mouseenter', function() {
-    $('#greenBtn').css('transform', 'scale(1.5)');
+  greenBtn.on('mouseenter', function() {
+    greenBtn.css('transform', 'scale(1.5)');
   }).on('mouseleave', function() {
-    $('#greenBtn').css('transform', 'none');
+    greenBtn.css('transform', 'none');
   })
 });
 
 // fog
 
-$('#fogBtn').animate({
-  'width': 200
-}, 4000);
+const animateFogBtn = (btn) => {
+  btn.animate({
+    'width': 200
+  }, 4000);
+}
 
-$('#unfogBtn').animate({
-  'width': 200
-}, 4000);
+animateFogBtn(fogBtn);
+animateFogBtn(unfogBtn);
 
 $(function(){
-  $('#fogBtn').click(function() {
+  fogBtn.click(function() {
     $('body').addClass('fog');
-    $('#fogBtn').hide();
-    $('#unfogBtn').show();
+    fogBtn.hide();
+    unfogBtn.show();
   });
 });
 
 $(function(){
-  $('#unfogBtn').click(function() {
+  unfogBtn.click(function() {
     $('body').removeClass('fog');
-    $('#fogBtn').show();
-    $('#unfogBtn').hide();
+    fogBtn.show();
+    unfogBtn.hide();
   });
 });
 
@@ -197,7 +216,7 @@ $(function(){
 // mouse coordinates
 
 $(function() {
-  $('#box').on('click', function(event) {
+  box.on('click', function(event) {
     alert('Your mouse is at X ' + event.pageX + ' & Y ' + event.pageY + '.');
   });
 });
@@ -214,7 +233,7 @@ $(function() {
     alert('This line counts how many times the above box fades.');
     event.stopPropagation();
   });
-  $('h3').on('click', function() {
+  h3.on('click', function() {
     alert('Check console to see examples of traversing the dom.');
   });
 
@@ -245,42 +264,43 @@ $(function() {
 // day & night toggle
 
 const setDayColors = () => {
-  $('#fogBtn').css('color', 'white');
-  $('#unfogBtn').css('color', 'white');
-  $('#box').css('color', 'white');
+  fogBtn.css('color', 'white');
+  unfogBtn.css('color', 'white');
+  box.css('color', 'white');
 }
 
 $(function() {
-  $('#nightLink').on('click', function(event) {
+  moonBtn.on('click', function(event) {
     event.preventDefault();
     $('body').css('background', 'black');
-    $('#fogBtn').css('color', 'black');
-    $('#unfogBtn').css('color', 'black');
-    $('#box').css('color', 'black');
-    $('#nightLink').hide();
-    $('#dayLink').show();
+    fogBtn.css('color', 'black');
+    unfogBtn.css('color', 'black');
+    box.css('color', 'black');
+    moonBtn.hide();
+    sunBtn.show();
+    rainbowBtn.show();
   });
 });
 
 $(function() {
-  $('#dayLink').on('click', function(event) {
+  sunBtn.on('click', function(event) {
     event.preventDefault();
     $('body').css('background', 'white');
     $('body').css('color', 'gray');
     setDayColors();
-    $('#dayLink').hide();
-    $('#nightLink').show();
+    sunBtn.hide();
+    moonBtn.show();
+    rainbowBtn.show();
   });
 });
 
-// rainbow button
+// rainbowBtn button
 
 $(function() {
-  $('#rainbowLink').on('click', function(event) {
+  rainbowBtn.on('click', function(event) {
     event.preventDefault();
     $('body').trigger('bgchange1');
-    $('#rainbowLink').hide();
-    $('#bwLink').show();
+    rainbowBtn.hide();
     setDayColors();
   });
 
@@ -296,23 +316,23 @@ $(function() {
   });
 });
 
-$(function() {
-  $('#bwLink').on('click', function(event) {
-    event.preventDefault();
-    $('body').trigger('bgchange2');
-    $('#bwLink').hide();
-    $('#rainbowLink').show();
-    setDayColors();
-  });
+// $(function() {
+//   $('#bwLink').on('click', function(event) {
+//     event.preventDefault();
+//     $('body').trigger('bgchange2');
+//     $('#bwLink').hide();
+//     rainbowBtn.show();
+//     setDayColors();
+//   });
 
-  $('body').on('bgchange2', function() {
-    $(this).css(
-      'background',
-      'white'
-    );
-    $(this).css(
-      'color',
-      'gray'
-    );
-  });
-});
+//   $('body').on('bgchange2', function() {
+//     $(this).css(
+//       'background',
+//       'white'
+//     );
+//     $(this).css(
+//       'color',
+//       'gray'
+//     );
+//   });
+// });

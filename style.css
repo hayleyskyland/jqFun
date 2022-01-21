@@ -7,6 +7,7 @@ body {
     flex-direction: column;
     text-align: center;
     color: gray; 
+    position: relative;
 }
 
 /* heading */
@@ -117,9 +118,21 @@ a {
 
 #moon,
 #sun,
-#rainbow,
-#bw {
+#rainbow {
     width: 2rem;
     height: 2rem;
     margin: 0 0.5rem 0 0.5rem;
+}
+
+#rainbow {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+#moon,
+#sun {
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
