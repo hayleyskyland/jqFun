@@ -20,7 +20,7 @@ const unfogBtn = $('#unfogBtn');
 const sunBtn = $('#dayLink')
 const moonBtn = $('#nightLink');
 
-const cookieBtn = $('#cookieBtn');
+// const cookieBtn = $('#cookieBtn');
 
 //////////////////// HELPER FUNCTIONS ////////////////////
 
@@ -51,7 +51,7 @@ $(function() {
 
   $(function() {
     if ($.cookie('theme') === 'night') {
-      setNightMode();
+      setTheme('night');
     };
   });
 
@@ -279,53 +279,51 @@ $(function() {
   });
 });
 
-// day & night toggle
+// day vs night theme
 
-const setDayMode = () => {
-  const themeText = [fogBtn, unfogBtn, box, cookieBtn];
-
-  body.css('background', 'white');
-  setColor([$(this)], 'gray');
-  setColor(themeText, 'white');
-  hide([sunBtn]);
-  show([moonBtn]);
-  $.cookie('theme', 'day', { expires: 7 });
-}
-
-const setNightMode = () => {
-  const themeText = [fogBtn, unfogBtn, box, cookieBtn];
-
-  body.css('background', 'black');
-  setColor(themeText, 'black');
-  hide([moonBtn]);
-  show([sunBtn]);
-  $.cookie('theme', 'night', { expires: 7 });
+const setTheme = (theme) => {
+  const themeText = [fogBtn, unfogBtn, box];
+  
+  if (theme === 'day') {
+    body.css('background', 'white');
+    setColor([$(this)], 'gray');
+    setColor(themeText, 'white');
+    hide([sunBtn]);
+    show([moonBtn]);
+    $.cookie('theme', 'day', { expires: 7 });
+  } else {
+    body.css('background', 'black');
+    setColor(themeText, 'black');
+    hide([moonBtn]);
+    show([sunBtn]);
+    $.cookie('theme', 'night', { expires: 7 });
+  }
 }
 
 $(function() {
   $(function() {
     sunBtn.on('click', function(event) {
       event.preventDefault();
-      setDayMode();
+      setTheme('day');
     });
   });
 
   $(function() {
     moonBtn.on('click', function(event) {
       event.preventDefault();
-      setNightMode();
+      setTheme('night');
     });
   })
 });
 
 //////////////////// COOKIES ////////////////////
 
-$.cookie('name', 'value', { expires: 7 });
+// $.cookie('name', 'value', { expires: 7 });
 
-let showValue = $.cookie('name')
+// let showValue = $.cookie('name')
 
-$(function(){
-  cookieBtn.click(function() {
-    alert(showValue);
-  });
-});
+// $(function(){
+//   cookieBtn.click(function() {
+//     alert(showValue);
+//   });
+// });
