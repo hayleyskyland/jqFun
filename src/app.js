@@ -20,6 +20,8 @@ const unfogBtn = $('#unfogBtn');
 const sunBtn = $('#dayLink')
 const moonBtn = $('#nightLink');
 
+const cookieBtn = $('#cookieBtn');
+
 //////////////////// HELPER FUNCTIONS ////////////////////
 
 const hide = (elements) => {
@@ -44,6 +46,14 @@ const setColor = (elements, colorVar) => {
 // this 1st function is invoked on load, basically a build-in `onReady`
 
 $(function() {
+
+  // cookie theme
+
+  $(function() {
+    if ($.cookie('theme') === 'night') {
+      setNightMode();
+    };
+  });
 
   // hide buttons on load
 
@@ -134,16 +144,16 @@ $(function() {
 
     // invoke logs
 
-    $(function() {
-      console.log('***** COUNT UP *****');
-      countUp();
+    // $(function() {
+    //   console.log('***** COUNT UP *****');
+    //   countUp();
 
-      console.log('***** FIRST & LAST LETTERS *****');
-      logFirstAndLastLetters();
+    //   console.log('***** FIRST & LAST LETTERS *****');
+    //   logFirstAndLastLetters();
 
-      console.log('***** CHILDREN & SIBLINGS *****');
-      logChildrenAndSiblings();
-    });
+    //   console.log('***** CHILDREN & SIBLINGS *****');
+    //   logChildrenAndSiblings();
+    // });
   });
 });
 
@@ -271,46 +281,51 @@ $(function() {
 
 // day & night toggle
 
-$(function() {
+const setDayMode = () => {
+  const themeText = [fogBtn, unfogBtn, box, cookieBtn];
 
+  body.css('background', 'white');
+  setColor([$(this)], 'gray');
+  setColor(themeText, 'white');
+  hide([sunBtn]);
+  show([moonBtn]);
+  $.cookie('theme', 'day', { expires: 7 });
+}
+
+const setNightMode = () => {
+  const themeText = [fogBtn, unfogBtn, box, cookieBtn];
+
+  body.css('background', 'black');
+  setColor(themeText, 'black');
+  hide([moonBtn]);
+  show([sunBtn]);
+  $.cookie('theme', 'night', { expires: 7 });
+}
+
+$(function() {
   $(function() {
     sunBtn.on('click', function(event) {
       event.preventDefault();
-      body.trigger('setDayMode');
-    });
-
-    body.on('setDayMode', function() {
-      $(this).css('background', 'white');
-      setColor([$(this)], 'gray');
-      setColor([fogBtn, unfogBtn, box], 'white');
-      hide([sunBtn]);
-      show([moonBtn]);
+      setDayMode();
     });
   });
 
   $(function() {
     moonBtn.on('click', function(event) {
       event.preventDefault();
-      body.trigger('setNightMode');
+      setNightMode();
     });
-
-    body.on('setNightMode', function() {
-      $(this).css('background', 'black');
-      setColor([fogBtn, unfogBtn, box], 'black');
-      hide([moonBtn]);
-      show([sunBtn]);
-    });
-  });
+  })
 });
 
 //////////////////// COOKIES ////////////////////
 
 $.cookie('name', 'value', { expires: 7 });
 
-const cookieBtn = $('#cookieBtn');
+let showValue = $.cookie('name')
 
 $(function(){
   cookieBtn.click(function() {
-    alert( $.cookie('name') );
+    alert(showValue);
   });
 });
