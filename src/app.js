@@ -1,7 +1,5 @@
 //////////////////// TARGET HTML ITEMS BY ID ////////////////////
 
-// general
-
 const body = $('body');
 const box = $('#box');
 const counter = $('#counter');
@@ -51,21 +49,23 @@ $(function() {
 
   // box counter
 
-  let i = 0;
-  counter.text('Fadetoggle: ' + (i+1));
+  $(function() {
+    let i = 0;
+    counter.text('Fadetoggle: ' + (i+1));
 
-  const toggleBox = (i) => {
-    box.fadeToggle(1500, function() {
-      i = i + 1;   
+    const toggleBox = (i) => {
+      box.fadeToggle(1500, function() {
+        i = i + 1;   
 
-      if(i < 4) {
-        counter.text('Fadetoggles: ' + (i+1));
-        toggleBox(i);
-      };
-    });
-  };
+        if(i < 4) {
+          counter.text('Fadetoggles: ' + (i+1));
+          toggleBox(i);
+        };
+      });
+    };
 
-  toggleBox(i);
+    toggleBox(i);
+  })
 
   // traversal logs
 
@@ -130,7 +130,7 @@ $(function() {
       });
     };
 
-    // invoke functions
+    // invoke logs
 
     $(function() {
       console.log('***** COUNT UP *****');
