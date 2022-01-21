@@ -1,10 +1,14 @@
 //////////////////// TARGET HTML ITEMS BY ID ////////////////////
 
+// general
+
 const body = $('body');
 const box = $('#box');
 const counter = $('#counter');
 const traversal = $('#traversal');
 const h3 = $('h3');
+
+// buttons
 
 const orangeBtn = $('#orangeBtn');
 const greenBtn = $('#greenBtn');
@@ -23,13 +27,13 @@ const hide = (elements) => {
   elements.forEach(element => {
     element.hide();
   });
-}
+};
 
 const show = (elements) => {
   elements.forEach(element => {
     element.show();
   });
-}
+};
 
 //////////////////// LOAD FUNCTION ////////////////////
 // this 1st function is invoked on load, basically a build-in `onReady`
@@ -52,15 +56,15 @@ $(function() {
       if(i < 4) {
         counter.text('Fadetoggles: ' + (i+1));
         toggleBox(i);
-      }
-    });
+      };
+        });
   };
 
   toggleBox(i);
 
   // traversal logs
 
-  const logs = () => {
+  $(function() {
 
     // create logs
 
@@ -68,36 +72,32 @@ $(function() {
     const h3Last = $('h3:last');
 
     const countUp = () => {   
-      const countWithoutZ = () => {
+      $(function() {
         let countThis = traversal.children();
         for (let i = 0; i < countThis.length; i++) {
           console.log('count up line 1:', countThis.eq(i).text());
-        }
-      }
+        };
+            });
 
-      const countWithZ = () => {
+      $(function() {
         let countWithZ = h3;
         console.log('count up line 2:', countWithZ.eq(3).text());
-      }
-
-      countWithoutZ();
-      countWithZ();
-    }
+      });
+    };
 
     const logFirstAndLastLetters = () => {
       console.log('first letter:', h3First.text())
       console.log('last letter :', h3Last.text())
-    }
+    };
 
     const logChildrenAndSiblings = () => {
-
       let articleLog = $('article h3').text();
       let traverseLog = traversal.children(h3).text();
       let nextLog = h3First.nextAll().andSelf().text();
       let findLog = (traversal).find(h3);
       let siblingLog = h3First.siblings().andSelf().text();
 
-      const logAllWithoutZ = () => {
+      $(function() {
         const allLogsMatch = () => {
           if (
             (articleLog = traverseLog)
@@ -106,25 +106,22 @@ $(function() {
             && (articleLog = siblingLog)
           ) {
             return 'all logs match';
-          }
-        }
+          };
+                };
 
         console.log('log line 1:', articleLog, '-', allLogsMatch())
-      }
+      });
 
-      const logAllWithZ = () => {
+      $(function() {
         let articleLog = h3.text();
 
         console.log('log lines 1 & 2:', articleLog)
-      }
-
-      logAllWithoutZ();
-      logAllWithZ();
-    }
+      });
+    };
 
     // invoke functions
 
-    const invokeLogs = () => {
+    $(function() {
       console.log('***** COUNT UP *****');
       countUp();
 
@@ -133,90 +130,11 @@ $(function() {
 
       console.log('***** CHILDREN & SIBLINGS *****');
       logChildrenAndSiblings();
-    }
-
-    invokeLogs();
-  }
-
-  logs();
-});
-
-//////////////////// CHANGE CSS ////////////////////
-
-const hoverColorBtns = () => {
-  const hoverHere = (btn) => {
-    btn.on('mouseenter', function() {
-      btn.css('transform', 'scale(1.5)');
-    }).on('mouseleave', function() {
-      btn.css('transform', 'none');
-    })
-  }
-
-  hoverHere(orangeBtn);
-  hoverHere(pinkBtn);
-  hoverHere(greenBtn);
-}
-
-hoverColorBtns();
-
-// orange button
-
-$(function(){
-  orangeBtn.click(function() {
-    h3.css('color', 'orange');
-    hide([orangeBtn]);
-    show([greenBtn, pinkBtn]);
+    });
   });
 });
 
-// pink button
-
-$(function(){
-  pinkBtn.click(function() {
-    h3.css('color', 'lightpink');
-    hide([pinkBtn]);
-    show([greenBtn, orangeBtn]);
-  });
-});
-
-// green button
-
-$(function(){
-  greenBtn.click(function() {
-    h3.css('color', 'olivedrab');
-    hide([greenBtn]);
-    show([pinkBtn, orangeBtn]);
-  });
-});
-
-// fog
-
-const animateFogBtn = (btn) => {
-  btn.animate({
-    'width': 200
-  }, 4000);
-}
-
-animateFogBtn(fogBtn);
-animateFogBtn(unfogBtn);
-
-$(function(){
-  fogBtn.click(function() {
-    body.addClass('fog');
-    hide([fogBtn]);
-    show([unfogBtn]);
-  });
-});
-
-$(function(){
-  unfogBtn.click(function() {
-    body.removeClass('fog');
-    show([fogBtn]);
-    hide([unfogBtn]);
-  });
-});
-
-//////////////////// EVENTS ////////////////////
+//////////////////// EVENTS - ALERTS ////////////////////
 
 // mouse coordinates
 
@@ -226,11 +144,11 @@ $(function() {
   });
 });
 
-// click events
+// click text
 
 $(function() {
 
-  // above paragraphs
+  // click text above paragraphs
 
   counter.on('click', function(event) {
     alert('This line counts how many times the above box fades.');
@@ -241,7 +159,7 @@ $(function() {
     alert('Check console to see examples of traversing the dom.');
   });
 
-  // paragraph click alerts
+  // click paragraphs
 
   $('#p1').on('click', function(event) {
     alert('You clicked Paragraph 1.');
@@ -265,64 +183,148 @@ $(function() {
 
 }); 
 
-// day & night toggle
+//////////////////// EVENTS - CHANGE CSS ////////////////////
 
-const setWhite = (element) => {
-  element.css('color', 'white')
-}
-
-const setBlack = (element) => {
-  element.css('color', 'black')
-}
-
-const setDayTextColors = () => {
-  setWhite(fogBtn);
-  setWhite(unfogBtn);
-  setWhite(box);
-  body.css('color', 'gray');
-}
-
-const setNightTextColors = () => {
-  setBlack(fogBtn);
-  setBlack(unfogBtn);
-  setBlack(box);
-}
+// color buttons
 
 $(function() {
-  moonBtn.on('click', function(event) {
-    event.preventDefault();
-    setNightTextColors();
-    body.css('background', 'black');
-    hide([moonBtn]);
-    show([sunBtn, rainbowBtn]);
+
+  const hoverColorBtns = () => {
+    const hoverHere = (btn) => {
+      btn.on('mouseenter', function() {
+        btn.css('transform', 'scale(1.5)');
+      }).on('mouseleave', function() {
+        btn.css('transform', 'none');
+      })
+    };
+
+    hoverHere(orangeBtn);
+    hoverHere(pinkBtn);
+    hoverHere(greenBtn);
+  };
+
+  hoverColorBtns();
+
+  $(function(){
+    orangeBtn.click(function() {
+      h3.css('color', 'orange');
+      hide([orangeBtn]);
+      show([greenBtn, pinkBtn]);
+    });
+  });
+
+  $(function(){
+    pinkBtn.click(function() {
+      h3.css('color', 'lightpink');
+      hide([pinkBtn]);
+      show([greenBtn, orangeBtn]);
+    });
+  });
+
+  $(function(){
+    greenBtn.click(function() {
+      h3.css('color', 'olivedrab');
+      hide([greenBtn]);
+      show([pinkBtn, orangeBtn]);
+    });
   });
 });
 
+// fog buttons
+
 $(function() {
-  sunBtn.on('click', function(event) {
-    event.preventDefault();
-    setDayTextColors();
-    body.css('background', 'white');
-    hide([sunBtn]);
-    show([moonBtn, rainbowBtn]);
+  const animateFogBtn = (btn) => {
+    btn.animate({
+      'width': 200
+    }, 4000);
+  };
+
+  animateFogBtn(fogBtn);
+  animateFogBtn(unfogBtn);
+
+  $(function(){
+    fogBtn.click(function() {
+      body.addClass('fog');
+      hide([fogBtn]);
+      show([unfogBtn]);
+    });
+  });
+
+  $(function(){
+    unfogBtn.click(function() {
+      body.removeClass('fog');
+      show([fogBtn]);
+      hide([unfogBtn]);
+    });
   });
 });
 
-// rainbow button
+// whole page themes
 
 $(function() {
-  rainbowBtn.on('click', function(event) {
-    event.preventDefault();
-    body.trigger('rainbowChange');
-    hide([rainbowBtn]);
+
+  // day & night toggle
+
+  const setWhite = (element) => {
+    element.css('color', 'white')
+  };
+
+  const setBlack = (element) => {
+    element.css('color', 'black')
+  };
+
+  const setDayTextColors = () => {
+    setWhite(fogBtn);
+    setWhite(unfogBtn);
+    setWhite(box);
+    body.css('color', 'gray');
+  };
+
+  const setNightTextColors = () => {
+    setBlack(fogBtn);
+    setBlack(unfogBtn);
+    setBlack(box);
+  };
+
+  $(function() {
+    $(function() {
+      moonBtn.on('click', function(event) {
+        event.preventDefault();
+        setNightTextColors();
+        body.css('background', 'black');
+        hide([moonBtn]);
+        show([sunBtn, rainbowBtn]);
+      });
+    });
+
+    $(function() {
+      sunBtn.on('click', function(event) {
+        event.preventDefault();
+        setDayTextColors();
+        body.css('background', 'white');
+        hide([sunBtn]);
+        show([moonBtn, rainbowBtn]);
+      });
+    });
   });
 
-  body.on('rainbowChange', function() {
-    $(this).css(
-      'background',
-      'linear-gradient(red, orange, yellow, green, blue, indigo, violet, red)'
-    );
-    setDayTextColors();
-    setWhite($(this))
+  // rainbow button
+
+  $(function() {
+    rainbowBtn.on('click', function(event) {
+      event.preventDefault();
+      body.trigger('rainbowChange');
+      hide([rainbowBtn, sunBtn]);
+      show([moonBtn]);
+    });
+
+    body.on('rainbowChange', function() {
+      $(this).css(
+        'background',
+        'linear-gradient(red, orange, yellow, green, blue, indigo, violet, red)'
+      );
+      setDayTextColors();
+      setWhite($(this));
+    });
   });
 });
