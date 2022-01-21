@@ -1,6 +1,7 @@
 //////////////////// TARGET HTML ITEMS BY ID ////////////////////
 // basically querySelector
 
+const body = $('body');
 const box = $('#box');
 const counter = $('#counter');
 const traversal = $('#traversal');
@@ -27,6 +28,7 @@ $(function() {
   greenBtn.hide();
   unfogBtn.hide();
   sunBtn.hide(); 
+  rainbowBtn.hide(); 
 
   // box counter
 
@@ -197,17 +199,25 @@ animateFogBtn(unfogBtn);
 
 $(function(){
   fogBtn.click(function() {
-    $('body').addClass('fog');
+    body.addClass('fog');
     fogBtn.hide();
     unfogBtn.show();
+
+    // if (body.css('background-color') === 'white') {
+    //   alert('working');
+    //   rainbowBtn.show();
+    // } else {
+    //   alert('not working')
+    // }
   });
 });
 
 $(function(){
   unfogBtn.click(function() {
-    $('body').removeClass('fog');
+    body.removeClass('fog');
     fogBtn.show();
     unfogBtn.hide();
+    // rainbowBtn.hide();
   });
 });
 
@@ -264,33 +274,41 @@ $(function() {
 // day & night toggle
 
 const setDayColors = () => {
-  fogBtn.css('color', 'white');
-  unfogBtn.css('color', 'white');
-  box.css('color', 'white');
+  const setWhite = (element) => {
+    element.css('color', 'white')
+  }
+  setWhite(fogBtn);
+  setWhite(unfogBtn);
+  setWhite(box);
+  body.css('background', 'white');
+  body.css('color', 'gray');
+}
+
+const setNightColors = () => {
+  const setBlack = (element) => {
+    element.css('color', 'black')
+  }
+  setBlack(fogBtn);
+  setBlack(unfogBtn);
+  setBlack(box);
+  body.css('background', 'black');
 }
 
 $(function() {
   moonBtn.on('click', function(event) {
     event.preventDefault();
-    $('body').css('background', 'black');
-    fogBtn.css('color', 'black');
-    unfogBtn.css('color', 'black');
-    box.css('color', 'black');
+    setNightColors();
     moonBtn.hide();
     sunBtn.show();
-    rainbowBtn.show();
   });
 });
 
 $(function() {
   sunBtn.on('click', function(event) {
     event.preventDefault();
-    $('body').css('background', 'white');
-    $('body').css('color', 'gray');
     setDayColors();
     sunBtn.hide();
     moonBtn.show();
-    rainbowBtn.show();
   });
 });
 
@@ -299,40 +317,16 @@ $(function() {
 $(function() {
   rainbowBtn.on('click', function(event) {
     event.preventDefault();
-    $('body').trigger('bgchange1');
+    body.trigger('bgchange1');
     rainbowBtn.hide();
     setDayColors();
   });
 
-  $('body').on('bgchange1', function() {
+  body.on('bgchange1', function() {
     $(this).css(
       'background',
       'linear-gradient(red, orange, yellow, green, blue, indigo, violet, red)'
     );
-    $(this).css(
-      'color',
-      'white'
-    );
+    $(this).css('color', 'white');
   });
 });
-
-// $(function() {
-//   $('#bwLink').on('click', function(event) {
-//     event.preventDefault();
-//     $('body').trigger('bgchange2');
-//     $('#bwLink').hide();
-//     rainbowBtn.show();
-//     setDayColors();
-//   });
-
-//   $('body').on('bgchange2', function() {
-//     $(this).css(
-//       'background',
-//       'white'
-//     );
-//     $(this).css(
-//       'color',
-//       'gray'
-//     );
-//   });
-// });
