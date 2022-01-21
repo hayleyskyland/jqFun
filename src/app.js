@@ -50,8 +50,8 @@ $(function() {
   // cookie theme
 
   $(function() {
-    if ($.cookie('theme') === 'night') {
-      setTheme('night');
+    if ($.cookie('theme') === 'black') {
+      setTheme('black');
     };
   });
 
@@ -95,8 +95,8 @@ $(function() {
 
         for (let i = 0; i < countThis.length; i++) {
           console.log('count up line 1:', countThis.eq(i).text());
-        }
-      }
+        };
+      };
 
       const countWithZ = () => {
         let countWithZ = $('h3');
@@ -106,7 +106,7 @@ $(function() {
 
       countWithoutZ();
       countWithZ();
-    }
+    };
 
     const logFirstAndLastLetters = () => {
       console.log('first letter:', h3First.text())
@@ -130,7 +130,7 @@ $(function() {
           ) {
             return 'all logs match';
           };
-                };
+        };
 
         console.log('log line 1:', articleLog, '-', allLogsMatch())
       });
@@ -144,16 +144,16 @@ $(function() {
 
     // invoke logs
 
-    // $(function() {
-    //   console.log('***** COUNT UP *****');
-    //   countUp();
+    $(function() {
+      console.log('***** COUNT UP *****');
+      countUp();
 
-    //   console.log('***** FIRST & LAST LETTERS *****');
-    //   logFirstAndLastLetters();
+      console.log('***** FIRST & LAST LETTERS *****');
+      logFirstAndLastLetters();
 
-    //   console.log('***** CHILDREN & SIBLINGS *****');
-    //   logChildrenAndSiblings();
-    // });
+      console.log('***** CHILDREN & SIBLINGS *****');
+      logChildrenAndSiblings();
+    });
   });
 });
 
@@ -281,37 +281,33 @@ $(function() {
 
 // day vs night theme
 
-const setTheme = (theme) => {
-  const themeText = [fogBtn, unfogBtn, box];
-  
-  if (theme === 'day') {
-    body.css('background', 'white');
-    setColor([$(this)], 'gray');
-    setColor(themeText, 'white');
+const setTheme = (color) => {
+  body.css('background', color);
+  setColor([fogBtn, unfogBtn, box], color);
+  $.cookie('theme', color, { expires: 7 });
+
+  if (color === 'white') {
+    setColor([body], 'gray');
     hide([sunBtn]);
     show([moonBtn]);
-    $.cookie('theme', 'day', { expires: 7 });
-  } else {
-    body.css('background', 'black');
-    setColor(themeText, 'black');
+  } else if (color === 'black') {
     hide([moonBtn]);
     show([sunBtn]);
-    $.cookie('theme', 'night', { expires: 7 });
-  }
-}
+  };
+};
 
 $(function() {
   $(function() {
     sunBtn.on('click', function(event) {
       event.preventDefault();
-      setTheme('day');
+      setTheme('white');
     });
   });
 
   $(function() {
     moonBtn.on('click', function(event) {
       event.preventDefault();
-      setTheme('night');
+      setTheme('black');
     });
-  })
+  });
 });
