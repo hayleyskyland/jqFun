@@ -266,6 +266,7 @@ $(function() {
 }); 
 
 // day & night toggle
+
 const setWhite = (element) => {
   element.css('color', 'white')
 }
@@ -274,36 +275,36 @@ const setBlack = (element) => {
   element.css('color', 'black')
 }
 
-const setDayColors = () => {
+const setDayTextColors = () => {
   setWhite(fogBtn);
   setWhite(unfogBtn);
   setWhite(box);
-  body.css('background', 'white');
   body.css('color', 'gray');
 }
 
-const setNightColors = () => {
+const setNightTextColors = () => {
   setBlack(fogBtn);
   setBlack(unfogBtn);
   setBlack(box);
-  body.css('background', 'black');
 }
 
 $(function() {
   moonBtn.on('click', function(event) {
     event.preventDefault();
-    setNightColors();
+    setNightTextColors();
+    body.css('background', 'black');
     hide([moonBtn]);
-    show([sunBtn]);
+    show([sunBtn, rainbowBtn]);
   });
 });
 
 $(function() {
   sunBtn.on('click', function(event) {
     event.preventDefault();
-    setDayColors();
+    setDayTextColors();
+    body.css('background', 'white');
     hide([sunBtn]);
-    show([moonBtn]);
+    show([moonBtn, rainbowBtn]);
   });
 });
 
@@ -312,15 +313,16 @@ $(function() {
 $(function() {
   rainbowBtn.on('click', function(event) {
     event.preventDefault();
-    body.trigger('bgchange');
+    body.trigger('rainbowChange');
     hide([rainbowBtn]);
   });
 
-  body.on('bgchange', function() {
+  body.on('rainbowChange', function() {
     $(this).css(
       'background',
       'linear-gradient(red, orange, yellow, green, blue, indigo, violet, red)'
     );
+    setDayTextColors();
     setWhite($(this))
   });
 });
