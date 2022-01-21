@@ -242,14 +242,9 @@ $(function() {
 // fog buttons
 
 $(function() {
-
   const animateFogBtn = (elements) => {
     elements.forEach(btn => {
-      btn.on('mouseenter', function() {
-        btn.css('transform', 'scale(1.5)');
-      }).on('mouseleave', function() {
-        btn.css('transform', 'none');
-      });
+      btn.animate({'width': 200}, 4000);
     });
   };
 
