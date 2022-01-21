@@ -62,7 +62,7 @@ $(function() {
         counter.text('Fadetoggles: ' + (i+1));
         toggleBox(i);
       };
-        });
+    });
   };
 
   toggleBox(i);
@@ -77,18 +77,24 @@ $(function() {
     const h3Last = $('h3:last');
 
     const countUp = () => {   
-      $(function() {
+
+      const countWithoutZ = () => {
         let countThis = traversal.children();
+
         for (let i = 0; i < countThis.length; i++) {
           console.log('count up line 1:', countThis.eq(i).text());
-        };
-            });
+        }
+      }
 
-      $(function() {
-        let countWithZ = h3;
+      const countWithZ = () => {
+        let countWithZ = $('h3');
+
         console.log('count up line 2:', countWithZ.eq(3).text());
-      });
-    };
+      }
+
+      countWithoutZ();
+      countWithZ();
+    }
 
     const logFirstAndLastLetters = () => {
       console.log('first letter:', h3First.text())
