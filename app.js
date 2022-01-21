@@ -244,6 +244,12 @@ $(function() {
 
 // day & night toggle
 
+const setDayColors = () => {
+  $('#fogBtn').css('color', 'white');
+  $('#unfogBtn').css('color', 'white');
+  $('#box').css('color', 'white');
+}
+
 $(function() {
   $('#nightLink').on('click', function(event) {
     event.preventDefault();
@@ -261,21 +267,13 @@ $(function() {
     event.preventDefault();
     $('body').css('background', 'white');
     $('body').css('color', 'gray');
-    $('#fogBtn').css('color', 'white');
-    $('#unfogBtn').css('color', 'white');
-    $('#box').css('color', 'white');
+    setDayColors();
     $('#dayLink').hide();
     $('#nightLink').show();
   });
 });
 
 // rainbow button
-
-const setDayColors = () => {
-  $('#fogBtn').css('color', 'white');
-  $('#unfogBtn').css('color', 'white');
-  $('#box').css('color', 'white');
-}
 
 $(function() {
   $('#rainbowLink').on('click', function(event) {
