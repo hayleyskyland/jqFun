@@ -104,6 +104,7 @@ $(function() {
   $('#greenBtn').hide();
   $('#unfogBtn').hide();
   $('#dayLink').hide(); 
+  $('#bwLink').hide();
 });
 
 //////////////////// CHANGE CSS ////////////////////
@@ -241,8 +242,7 @@ $(function() {
 
 }); 
 
-
-// prevent default behaviors on click
+// day & night toggle
 
 $(function() {
   $('#nightLink').on('click', function(event) {
@@ -260,10 +260,61 @@ $(function() {
   $('#dayLink').on('click', function(event) {
     event.preventDefault();
     $('body').css('background', 'white');
+    $('body').css('color', 'gray');
     $('#fogBtn').css('color', 'white');
     $('#unfogBtn').css('color', 'white');
     $('#box').css('color', 'white');
     $('#dayLink').hide();
     $('#nightLink').show();
+  });
+});
+
+// rainbow button
+
+const setDayColors = () => {
+  $('#fogBtn').css('color', 'white');
+  $('#unfogBtn').css('color', 'white');
+  $('#box').css('color', 'white');
+}
+
+$(function() {
+  $('#rainbowLink').on('click', function(event) {
+    event.preventDefault();
+    $('body').trigger('bgchange1');
+    $('#rainbowLink').hide();
+    $('#bwLink').show();
+    setDayColors();
+  });
+
+  $('body').on('bgchange1', function() {
+    $(this).css(
+      'background',
+      'linear-gradient(red, orange, yellow, green, blue, indigo, violet, red)'
+    );
+    $(this).css(
+      'color',
+      'white'
+    );
+  });
+});
+
+$(function() {
+  $('#bwLink').on('click', function(event) {
+    event.preventDefault();
+    $('body').trigger('bgchange2');
+    $('#bwLink').hide();
+    $('#rainbowLink').show();
+    setDayColors();
+  });
+
+  $('body').on('bgchange2', function() {
+    $(this).css(
+      'background',
+      'white'
+    );
+    $(this).css(
+      'color',
+      'gray'
+    );
   });
 });
