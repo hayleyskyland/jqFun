@@ -1,5 +1,4 @@
 //////////////////// TARGET HTML ITEMS BY ID ////////////////////
-// basically querySelector
 
 const body = $('body');
 const box = $('#box');
@@ -18,17 +17,28 @@ const sunBtn = $('#dayLink')
 const moonBtn = $('#nightLink');
 const rainbowBtn = $('#rainbowLink');
 
+//////////////////// HELPER FUNCTIONS ////////////////////
+
+const hide = (elements) => {
+  elements.forEach(element => {
+    element.hide();
+  });
+}
+
+const show = (elements) => {
+  elements.forEach(element => {
+    element.show();
+  });
+}
+
 //////////////////// LOAD FUNCTION ////////////////////
 // this 1st function is invoked on load, basically a build-in `onReady`
 
 $(function() {
 
-  // hide buttons
+  // hide buttons on load
 
-  greenBtn.hide();
-  unfogBtn.hide();
-  sunBtn.hide(); 
-  rainbowBtn.hide(); 
+  hide([greenBtn, unfogBtn, sunBtn]);
 
   // box counter
 
@@ -46,15 +56,20 @@ $(function() {
     });
   };
 
+  toggleBox(i);
+
   // traversal logs
 
   const logs = () => {
 
-    const countUp = () => {   
+    // create logs
 
+    const h3First = $('h3:first');
+    const h3Last = $('h3:last');
+
+    const countUp = () => {   
       const countWithoutZ = () => {
         let countThis = traversal.children();
-
         for (let i = 0; i < countThis.length; i++) {
           console.log('count up line 1:', countThis.eq(i).text());
         }
@@ -62,7 +77,6 @@ $(function() {
 
       const countWithZ = () => {
         let countWithZ = h3;
-
         console.log('count up line 2:', countWithZ.eq(3).text());
       }
 
@@ -71,17 +85,17 @@ $(function() {
     }
 
     const logFirstAndLastLetters = () => {
-      console.log('first letter:', $('h3:first').text())
-      console.log('last letter :', $('h3:last').text())
+      console.log('first letter:', h3First.text())
+      console.log('last letter :', h3Last.text())
     }
 
     const logChildrenAndSiblings = () => {
 
       let articleLog = $('article h3').text();
-      let traverseLog = traversal.children('h3').text();
-      let nextLog = $('h3:first').nextAll().andSelf().text();
-      let findLog = (traversal).find('h3');
-      let siblingLog = $('h3:first').siblings().andSelf().text();
+      let traverseLog = traversal.children(h3).text();
+      let nextLog = h3First.nextAll().andSelf().text();
+      let findLog = (traversal).find(h3);
+      let siblingLog = h3First.siblings().andSelf().text();
 
       const logAllWithoutZ = () => {
         const allLogsMatch = () => {
@@ -108,20 +122,20 @@ $(function() {
       logAllWithZ();
     }
 
-    //////////////////// INVOKE FUNCTIONS ////////////////////
+    // invoke functions
 
-    toggleBox(i);
+    const invokeLogs = () => {
+      console.log('***** COUNT UP *****');
+      countUp();
 
-    // traversal logs
+      console.log('***** FIRST & LAST LETTERS *****');
+      logFirstAndLastLetters();
 
-    console.log('***** COUNT UP *****');
-    countUp();
+      console.log('***** CHILDREN & SIBLINGS *****');
+      logChildrenAndSiblings();
+    }
 
-    console.log('***** FIRST & LAST LETTERS *****');
-    logFirstAndLastLetters();
-
-    console.log('***** CHILDREN & SIBLINGS *****');
-    logChildrenAndSiblings();
+    invokeLogs();
   }
 
   logs();
@@ -129,23 +143,30 @@ $(function() {
 
 //////////////////// CHANGE CSS ////////////////////
 
+const hoverColorBtns = () => {
+  const hoverHere = (btn) => {
+    btn.on('mouseenter', function() {
+      btn.css('transform', 'scale(1.5)');
+    }).on('mouseleave', function() {
+      btn.css('transform', 'none');
+    })
+  }
+
+  hoverHere(orangeBtn);
+  hoverHere(pinkBtn);
+  hoverHere(greenBtn);
+}
+
+hoverColorBtns();
+
 // orange button
 
 $(function(){
   orangeBtn.click(function() {
     h3.css('color', 'orange');
-    orangeBtn.hide();
-    greenBtn.show();
-    pinkBtn.show();
+    hide([orangeBtn]);
+    show([greenBtn, pinkBtn]);
   });
-});
-
-$(function(){
-  orangeBtn.on('mouseenter', function() {
-    orangeBtn.css('transform', 'scale(1.5)');
-  }).on('mouseleave', function() {
-    orangeBtn.css('transform', 'none');
-  })
 });
 
 // pink button
@@ -153,18 +174,9 @@ $(function(){
 $(function(){
   pinkBtn.click(function() {
     h3.css('color', 'lightpink');
-    pinkBtn.hide();
-    greenBtn.show();
-    orangeBtn.show();
+    hide([pinkBtn]);
+    show([greenBtn, orangeBtn]);
   });
-});
-
-$(function(){
-  pinkBtn.on('mouseenter', function() {
-    pinkBtn.css('transform', 'scale(1.5)');
-  }).on('mouseleave', function() {
-    pinkBtn.css('transform', 'none');
-  })
 });
 
 // green button
@@ -172,18 +184,9 @@ $(function(){
 $(function(){
   greenBtn.click(function() {
     h3.css('color', 'olivedrab');
-    greenBtn.hide();
-    pinkBtn.show();
-    orangeBtn.show();
+    hide([greenBtn]);
+    show([pinkBtn, orangeBtn]);
   });
-});
-
-$(function(){
-  greenBtn.on('mouseenter', function() {
-    greenBtn.css('transform', 'scale(1.5)');
-  }).on('mouseleave', function() {
-    greenBtn.css('transform', 'none');
-  })
 });
 
 // fog
@@ -200,24 +203,16 @@ animateFogBtn(unfogBtn);
 $(function(){
   fogBtn.click(function() {
     body.addClass('fog');
-    fogBtn.hide();
-    unfogBtn.show();
-
-    // if (body.css('background-color') === 'white') {
-    //   alert('working');
-    //   rainbowBtn.show();
-    // } else {
-    //   alert('not working')
-    // }
+    hide([fogBtn]);
+    show([unfogBtn]);
   });
 });
 
 $(function(){
   unfogBtn.click(function() {
     body.removeClass('fog');
-    fogBtn.show();
-    unfogBtn.hide();
-    // rainbowBtn.hide();
+    show([fogBtn]);
+    hide([unfogBtn]);
   });
 });
 
@@ -227,11 +222,9 @@ $(function(){
 
 $(function() {
   box.on('click', function(event) {
-    alert('Your mouse is at X ' + event.pageX + ' & Y ' + event.pageY + '.');
+    alert(`Your mouse is at X ${event.pageX} & Y ${event.pageY}.`);
   });
 });
-
-// collapse/expand accordian (come back to this)
 
 // click events
 
@@ -239,10 +232,11 @@ $(function() {
 
   // above paragraphs
 
-  $('#counter').on('click', function(event) {
+  counter.on('click', function(event) {
     alert('This line counts how many times the above box fades.');
-    event.stopPropagation();
   });
+
+  
   h3.on('click', function() {
     alert('Check console to see examples of traversing the dom.');
   });
@@ -272,11 +266,15 @@ $(function() {
 }); 
 
 // day & night toggle
+const setWhite = (element) => {
+  element.css('color', 'white')
+}
+
+const setBlack = (element) => {
+  element.css('color', 'black')
+}
 
 const setDayColors = () => {
-  const setWhite = (element) => {
-    element.css('color', 'white')
-  }
   setWhite(fogBtn);
   setWhite(unfogBtn);
   setWhite(box);
@@ -285,9 +283,6 @@ const setDayColors = () => {
 }
 
 const setNightColors = () => {
-  const setBlack = (element) => {
-    element.css('color', 'black')
-  }
   setBlack(fogBtn);
   setBlack(unfogBtn);
   setBlack(box);
@@ -298,8 +293,8 @@ $(function() {
   moonBtn.on('click', function(event) {
     event.preventDefault();
     setNightColors();
-    moonBtn.hide();
-    sunBtn.show();
+    hide([moonBtn]);
+    show([sunBtn]);
   });
 });
 
@@ -307,26 +302,25 @@ $(function() {
   sunBtn.on('click', function(event) {
     event.preventDefault();
     setDayColors();
-    sunBtn.hide();
-    moonBtn.show();
+    hide([sunBtn]);
+    show([moonBtn]);
   });
 });
 
-// rainbowBtn button
+// rainbow button
 
 $(function() {
   rainbowBtn.on('click', function(event) {
     event.preventDefault();
-    body.trigger('bgchange1');
-    rainbowBtn.hide();
-    setDayColors();
+    body.trigger('bgchange');
+    hide([rainbowBtn]);
   });
 
-  body.on('bgchange1', function() {
+  body.on('bgchange', function() {
     $(this).css(
       'background',
       'linear-gradient(red, orange, yellow, green, blue, indigo, violet, red)'
     );
-    $(this).css('color', 'white');
+    setWhite($(this))
   });
 });
