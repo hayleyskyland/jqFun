@@ -315,15 +315,3 @@ $(function() {
     });
   })
 });
-
-//////////////////// COOKIES ////////////////////
-
-// $.cookie('name', 'value', { expires: 7 });
-
-// let showValue = $.cookie('name')
-
-// $(function(){
-//   cookieBtn.click(function() {
-//     alert(showValue);
-//   });
-// });
