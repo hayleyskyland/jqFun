@@ -1,5 +1,7 @@
 //////////////////// TARGET HTML ITEMS BY ID ////////////////////
 
+// alert( $.cookie('example') );
+
 const body = $('body');
 const box = $('#box');
 const counter = $('#counter');
@@ -298,5 +300,17 @@ $(function() {
       hide([moonBtn]);
       show([sunBtn]);
     });
+  });
+});
+
+//////////////////// COOKIES ////////////////////
+
+$.cookie('name', 'value', { expires: 7 });
+
+const cookieBtn = $('#cookieBtn');
+
+$(function(){
+  cookieBtn.click(function() {
+    alert( $.cookie('name') );
   });
 });
