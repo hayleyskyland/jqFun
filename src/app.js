@@ -318,57 +318,27 @@ $(function() {
 
 // ACCORDION
 
-// book
-
-// $(function() {
-//   const heading = $('h4');
-//   const lorem = $('h5');
-
-//   // lorems.not(':first').hide();
-
-//   lorem.hide();
-
-//   heading.on('click', function() {
-//     var paraBelow = $(this).next();
-
-//     if (paraBelow.is(':visible')) {
-//       return;
-//     }
-
-//     lorem.slideUp('normal');
-//     paraBelow.slideDown('normal');
-//   });
-// });
-
-// jqueryui.com
-// this is the og working one
-
 $(function() {
-  accordion.accordion({
-    active: false,
-    collapsible: true
-  });
-});
+  var heading = $('h4');
+  var allText = $('h5');
 
-// stack overflow tests
+  allText.not(':first').hide();
 
-$(function() {
-  accordion.accordion({
-    collapsible: true,
+  // allText.hide();
 
-    beforeActivate: function(event, section) {
-      const currentHeading  = section.newHeader;
-      const currentText = currentHeading.next('.ui-accordion-content');
-      const isPanelSelected = currentHeading.attr('aria-selected') == 'true';
+  heading.on('click', function() {
+    var currentText = $(this).next();
 
-      currentHeading.attr('aria-selected', ((!isPanelSelected).toString()));
+    if (currentText.is(':visible')) {
+      return;
+    }
 
-      if (isPanelSelected) {
-        currentText.slideUp();
-      } else {
-        currentText.slideDown();
-      }
-      return false; // allows multiple expanded sections at once
+    var isPanelSelected = heading.attr('aria-selected') == 'true';
+
+    if (isPanelSelected) {
+      allText.slideUp('normal')
+    } else {
+      currentText.slideDown('normal');
     }
   });
 });
