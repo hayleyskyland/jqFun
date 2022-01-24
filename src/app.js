@@ -286,7 +286,7 @@ $(function() {
 
 const setTheme = (color) => {
   body.css('background', color);
-  setColor([fogBtn, unfogBtn, box], color);
+  setColor([fogBtn, unfogBtn, box, accordionHeading], color);
   $.cookie('theme', color, { expires: 7 });
 
   if (color === 'white') {
@@ -294,23 +294,9 @@ const setTheme = (color) => {
     hide([sunBtn]);
     show([moonBtn]);
 
-
-    // accordion.css('background', 'white');
-    // accordion.css('color', 'gray');
-    accordionHeading.css('color', 'white');
-    // accordion.css('border', '1px solid lightgray');
-
-
   } else if (color === 'black') {
     hide([moonBtn]);
     show([sunBtn]);
-
-    // accordion.css('background', 'black');
-    // accordion.css('color', 'white');
-    accordionHeading.css('color', 'black');
-    // accordion.css('border', '1px solid white');
-
-
   };
 };
 
