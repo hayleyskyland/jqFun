@@ -317,5 +317,19 @@ $(function() {
 $(function() {
   var headings = $('h4');
   var paragraphs = $('h5');
-  paragraphs.not(":first").hide();
+
+  paragraphs.not(':first').hide();
+
+  headings.on('click', function() {
+    var t = $(this);
+    var tPara = t.next();
+    
+    if(tPara.is(':visible')) {
+      return;
+    }
+
+    paragraphs.slideUp('slow');
+    tPara.slideDown('slow');
+  });
 });
+
