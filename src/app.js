@@ -311,3 +311,11 @@ $(function() {
     });
   });
 });
+
+// ACCORDIAN
+
+$(function() {
+  var headings = $('h4');
+  var paragraphs = $('h5');
+  paragraphs.not(":first").hide();
+});
