@@ -341,9 +341,55 @@ $(function() {
 // });
 
 // jqueryui.com
+// 1 section open at a time
+
+// $(function() {
+//   accordion.click(function() {
+//     $(this).next().toggle();
+//     return false;
+//   }).next().hide();
+// });
+
+
+// stack overflow
+// 2 sections open at a time
+// https://stackoverflow.com/questions/3479447/jquery-ui-accordion-that-keeps-multiple-sections-open
 
 $(function() {
   accordion.accordion({
-    collapsible: true
+    collapsible: true,
+    beforeActivate: function(event, ui) {
+
+      if (ui.newHeader[0]) {
+          var currentHeading  = ui.newHeader;
+          var currentText = currentHeading.next('.ui-accordion-content');
+
+      } else {
+          var currentHeading  = ui.oldHeader;
+          var currentText = currentHeading.next('.ui-accordion-content');
+      }
+
+      var isPanelSelected = currentHeading.attr('aria-selected') == 'true';
+
+      currentHeading
+        .toggleClass('ui-corner-all', isPanelSelected)
+        .toggleClass('accordion-header-active ui-state-active ui-corner-top', !isPanelSelected)
+        .attr('aria-selected', ((!isPanelSelected).toString()));
+
+      currentHeading.children('.ui-icon')
+        .toggleClass('ui-icon-triangle-1-e', isPanelSelected)
+        .toggleClass('ui-icon-triangle-1-s', !isPanelSelected);
+
+      currentText
+        .toggleClass('accordion-content-active', !isPanelSelected)    
+
+      if (isPanelSelected) {
+        currentText.slideUp();
+      } else {
+        currentText.slideDown();
+      }
+
+      return false; // Cancels the default action
+    }
   });
 });
