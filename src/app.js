@@ -20,6 +20,9 @@ const unfogBtn = $('#unfogBtn');
 const sunBtn = $('#dayLink')
 const moonBtn = $('#nightLink');
 
+const accordion = $('#accordion');
+const accordionHeading = $('h4');
+
 // const cookieBtn = $('#cookieBtn');
 
 //////////////////// HELPER FUNCTIONS ////////////////////
@@ -63,14 +66,14 @@ $(function() {
 
   $(function() {
     let i = 0;
-    counter.text('Fadetoggle: ' + (i+1));
+    counter.text('fadetoggle: ' + (i+1));
 
     const toggleBox = (i) => {
       box.fadeToggle(1500, function() {
         i = i + 1;   
 
         if(i < 4) {
-          counter.text('Fadetoggles: ' + (i+1));
+          counter.text('fadetoggles: ' + (i+1));
           toggleBox(i);
         };
       });
@@ -185,7 +188,7 @@ $(function() {
   // click paragraphs
 
   $('#p1').on('click', function(event) {
-    alert('You clicked Paragraph 1.');
+    alert('You clicked paragraph 1.');
     event.stopPropagation();
   });
 
@@ -196,12 +199,12 @@ $(function() {
   // add paragraph
 
   $(('<p />'), {
-    text: 'Paragraph 3 (click me)',
+    text: 'paragraph 3 (click me)',
     id: 'p3'
   }).appendTo('#paragraphs');
 
   $('p:nth-child(3)').on('click', function() {
-    alert('You clicked Paragraph 3.');
+    alert('You clicked paragraph 3.');
   });
 
 }); 
@@ -290,9 +293,24 @@ const setTheme = (color) => {
     setColor([body], 'gray');
     hide([sunBtn]);
     show([moonBtn]);
+
+
+    // accordion.css('background', 'white');
+    // accordion.css('color', 'gray');
+    accordionHeading.css('color', 'white');
+    // accordion.css('border', '1px solid lightgray');
+
+
   } else if (color === 'black') {
     hide([moonBtn]);
     show([sunBtn]);
+
+    // accordion.css('background', 'black');
+    // accordion.css('color', 'white');
+    accordionHeading.css('color', 'black');
+    // accordion.css('border', '1px solid white');
+
+
   };
 };
 
@@ -312,24 +330,34 @@ $(function() {
   });
 });
 
-// ACCORDIAN
+// ACCORDION
+
+// book
+
+// $(function() {
+//   const heading = $('h4');
+//   const lorem = $('h5');
+
+//   // lorems.not(':first').hide();
+
+//   lorem.hide();
+
+//   heading.on('click', function() {
+//     var paraBelow = $(this).next();
+
+//     if (paraBelow.is(':visible')) {
+//       return;
+//     }
+
+//     lorem.slideUp('normal');
+//     paraBelow.slideDown('normal');
+//   });
+// });
+
+// jqueryui.com
 
 $(function() {
-  var headings = $('h4');
-  var paragraphs = $('h5');
-
-  paragraphs.not(':first').hide();
-
-  headings.on('click', function() {
-    var t = $(this);
-    var tPara = t.next();
-    
-    if(tPara.is(':visible')) {
-      return;
-    }
-
-    paragraphs.slideUp('slow');
-    tPara.slideDown('slow');
+  accordion.accordion({
+    collapsible: true
   });
 });
-

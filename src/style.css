@@ -14,7 +14,7 @@ body {
 /* heading */
 
 h1 {
-    margin-bottom: 0;
+    margin-bottom: 2rem;
 }
 
 /* hello world box */
@@ -134,17 +134,19 @@ a {
     left: 10px;
 }
 
-/* accordian */
+/* accordion */
 
 #accordion {
-    width: 500px;
-    border: 1px solid black;
+    width: 20rem;
+    font-size: 14px;
 }
   
 #accordion h4 {
-    padding: 5px;
-    margin: 0;
-    background: #ddd;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    margin: 0 0 0.5rem 0;
+    background: lightgray;
+    color: white;
+    border-radius: 20px;
 }
   
 #accordion p {
