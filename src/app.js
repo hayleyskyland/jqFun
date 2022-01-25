@@ -22,10 +22,15 @@ const accordionHeading = $('h4');
 
 const collapseIcon1 = $('#collapse-1');
 const expandIcon1 = $('#expand-1');
-
 const sectionText1 = $('#sectionText1');
-// const sectionText2 = $('#sectionText2');
-// const sectionText2 = $('#sectionText2');
+
+const collapseIcon2 = $('#collapse-2');
+const expandIcon2 = $('#expand-2');
+const sectionText2 = $('#sectionText2');
+
+const collapseIcon3 = $('#collapse-3');
+const expandIcon3 = $('#expand-3');
+const sectionText3 = $('#sectionText3');
 
 //////////////////// HELPER FUNCTIONS ////////////////////
 
@@ -66,14 +71,22 @@ $(function() {
     } else {
       showSec1();
     }
+  });
 
-    // if ($.cookie('accordion2') === 'close') {
-    //   $('.accordion2').hide();
-    // };
+  $(function() {
+    if ($.cookie('accordion2') ==  'close') {
+      hideSec2();
+    } else {
+      showSec2();
+    }
+  });
 
-    // if ($.cookie('accordion3') === 'close') {
-    //   $('.accordion3').hide();
-    // };
+  $(function() {
+    if ($.cookie('accordion3') ==  'close') {
+      hideSec3();
+    } else {
+      showSec3();
+    }
   });
 
   // hide buttons on load
@@ -341,20 +354,43 @@ const setAccordion = (section, status) => {
   $.cookie(section, status, { expires: 7 });
 };
 
+// section 1
+
 const hideSec1 = () => {
   hide([sectionText1, collapseIcon1]);
   show([expandIcon1]);
-  // body.css('background-color', 'darkred')
 }
 
 const showSec1 = () => {
   show([sectionText1, collapseIcon1]);
   hide([expandIcon1]);
-  // body.css('background-color', 'lightgreen')
+}
+
+// section 2
+
+const hideSec2 = () => {
+  hide([sectionText2, collapseIcon2]);
+  show([expandIcon2]);
+}
+
+const showSec2 = () => {
+  show([sectionText2, collapseIcon2]);
+  hide([expandIcon2]);
+}
+
+// section 3
+
+const hideSec3 = () => {
+  hide([sectionText3, collapseIcon3]);
+  show([expandIcon3]);
+}
+
+const showSec3 = () => {
+  show([sectionText3, collapseIcon3]);
+  hide([expandIcon3]);
 }
 
 $(function() {
-
   collapseIcon1.on('click', function(event) {
     hideSec1();
     setAccordion('accordion1', 'close');
@@ -364,5 +400,28 @@ $(function() {
     showSec1();
     setAccordion('accordion1', 'open');
   });
+})
 
+$(function() {
+  collapseIcon2.on('click', function(event) {
+    hideSec2();
+    setAccordion('accordion2', 'close');
+  });
+
+  expandIcon2.on('click', function(event) {
+    showSec2();
+    setAccordion('accordion2', 'open');
+  });
+})
+
+$(function() {
+  collapseIcon3.on('click', function(event) {
+    hideSec3();
+    setAccordion('accordion3', 'close');
+  });
+
+  expandIcon3.on('click', function(event) {
+    showSec3();
+    setAccordion('accordion3', 'open');
+  });
 })
