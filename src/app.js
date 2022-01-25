@@ -328,24 +328,35 @@ $(function() {
 
 // ACCORDION
 
-$(function() {
-  var heading = $('h4');
-  var allText = $('h5');
-
-  allText.not(':first').hide();
-
-  heading.on('click', function() {
-    var currentText = $(this).next();
-    
-    if(currentText.is(':visible')) {
-      return;
-    }
-
-    allText.slideUp('normal');
-    currentText.slideDown('normal');
-  });
-});
-
 const setAccordion = (accordionNum) => {
   $.cookie(accordionNum, 'open', { expires: 7 });
 };
+
+// $(function() {
+//   var heading = $('h4');
+//   var allText = $('h5');
+
+//   allText.not(':first').hide();
+
+//   heading.on('click', function() {
+//     var currentText = $(this).next();
+    
+//     if(currentText.is(':visible')) {
+//       return;
+//     }
+
+//     allText.slideUp('normal');
+//     currentText.slideDown('normal');
+//   });
+// });
+
+$(function() {
+  const heading = $('h4');
+
+  const section = $('h5');
+  section.show();
+
+  heading.on('click', function() {
+    $(this).next().toggle();
+  });
+});
