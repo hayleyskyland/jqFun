@@ -61,9 +61,11 @@ $(function() {
   });
 
   $(function() {
-    if ($.cookie('accordion1') === 'close') {
+    if ($.cookie('accordion1') ==  'close') {
       hideSec1();
-    };
+    } else {
+      showSec1();
+    }
 
     // if ($.cookie('accordion2') === 'close') {
     //   $('.accordion2').hide();
@@ -76,7 +78,7 @@ $(function() {
 
   // hide buttons on load
 
-  hide([greenBtn, unfogBtn, sunBtn, expandIcon1]);
+  hide([greenBtn, unfogBtn, sunBtn]);
 
   // box counter
 
@@ -342,13 +344,13 @@ const setAccordion = (section, status) => {
 const hideSec1 = () => {
   hide([sectionText1, collapseIcon1]);
   show([expandIcon1]);
-  body.css('background-color', 'darkred')
+  // body.css('background-color', 'darkred')
 }
 
 const showSec1 = () => {
   show([sectionText1, collapseIcon1]);
   hide([expandIcon1]);
-  body.css('background-color', 'lightgreen')
+  // body.css('background-color', 'lightgreen')
 }
 
 $(function() {
@@ -360,7 +362,7 @@ $(function() {
 
   expandIcon1.on('click', function(event) {
     showSec1();
-    setAccordion('accordion2', 'open');
+    setAccordion('accordion1', 'open');
   });
 
 })
