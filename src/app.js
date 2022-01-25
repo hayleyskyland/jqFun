@@ -1,7 +1,5 @@
 //////////////////// TARGET HTML ITEMS BY ID ////////////////////
 
-// alert( $.cookie('example') );
-
 const body = $('body');
 const box = $('#box');
 const counter = $('#counter');
@@ -22,8 +20,6 @@ const moonBtn = $('#nightLink');
 
 const accordion = $('#accordion');
 const accordionHeading = $('h4');
-
-// const cookieBtn = $('#cookieBtn');
 
 //////////////////// HELPER FUNCTIONS ////////////////////
 
@@ -50,11 +46,25 @@ const setColor = (elements, colorVar) => {
 
 $(function() {
 
-  // cookie theme
+  // cookies
 
   $(function() {
     if ($.cookie('theme') === 'black') {
       setTheme('black');
+    };
+  });
+
+  $(function() {
+    if ($.cookie('accordion1') === 'open') {
+      setAccordion('accordian1');
+    };
+
+    if ($.cookie('accordion2') === 'open') {
+      setAccordion('accordian2');
+    };
+
+    if ($.cookie('accordion3') === 'open') {
+      setAccordion('accordian3');
     };
   });
 
@@ -324,21 +334,18 @@ $(function() {
 
   allText.not(':first').hide();
 
-  // allText.hide();
-
   heading.on('click', function() {
     var currentText = $(this).next();
-
-    if (currentText.is(':visible')) {
+    
+    if(currentText.is(':visible')) {
       return;
     }
 
-    var isPanelSelected = heading.attr('aria-selected') == 'true';
-
-    if (isPanelSelected) {
-      allText.slideUp('normal')
-    } else {
-      currentText.slideDown('normal');
-    }
+    allText.slideUp('normal');
+    currentText.slideDown('normal');
   });
 });
+
+const setAccordion = (accordionNum) => {
+  $.cookie(accordionNum, 'open', { expires: 7 });
+};
