@@ -18,6 +18,8 @@ const unfogBtn = $('#unfogBtn');
 const sunBtn = $('#dayLink')
 const moonBtn = $('#nightLink');
 
+const accordionHeading = $('h4');
+
 const collapseIcon1 = $('#collapse-1');
 const expandIcon1 = $('#expand-1');
 
