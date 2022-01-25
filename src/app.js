@@ -58,19 +58,19 @@ $(function() {
     };
   });
 
-  // $(function() {
-  //   if ($.cookie('accordion1') === 'close') {
-  //     $('.accordion1').hide();
-  //   };
+  $(function() {
+    if ($.cookie('accordion1') === 'close') {
+      hideSec1();
+    };
 
-  //   if ($.cookie('accordion2') === 'close') {
-  //     $('.accordion2').hide();
-  //   };
+    // if ($.cookie('accordion2') === 'close') {
+    //   $('.accordion2').hide();
+    // };
 
-  //   if ($.cookie('accordion3') === 'close') {
-  //     $('.accordion3').hide();
-  //   };
-  // });
+    // if ($.cookie('accordion3') === 'close') {
+    //   $('.accordion3').hide();
+    // };
+  });
 
   // hide buttons on load
 
@@ -332,28 +332,33 @@ $(function() {
 
 // ACCORDION
 
-const setAccordion = (status) => {
+const setAccordion = (section, status) => {
   // alert(`${accordionNum} is now set to ${status}`)
-  $.cookie(`${this.className.text}`, status, { expires: 7 });
+  $.cookie(section, status, { expires: 7 });
 };
+
+const hideSec1 = () => {
+  hide([sectionText1, collapseIcon1]);
+  show([expandIcon1]);
+  body.css('background-color', 'darkred')
+}
+
+const showSec1 = () => {
+  show([sectionText1, collapseIcon1]);
+  hide([expandIcon1]);
+  body.css('background-color', 'lightgreen')
+}
 
 $(function() {
 
-
-
-
   collapseIcon1.on('click', function(event) {
-    sectionText1.hide();
-    expandIcon1.show();
-    collapseIcon1.hide();
-    // setAccordion(`${this.className.text}`, 'close');
+    hideSec1();
+    setAccordion('accordion1', 'close');
   });
 
   expandIcon1.on('click', function(event) {
-    sectionText1.show();
-    expandIcon1.hide();
-    collapseIcon1.show();
-    // setAccordion(`${this.className.text}`, 'open');
+    showSec1();
+    setAccordion('accordion2', 'open');
   });
 
 })
