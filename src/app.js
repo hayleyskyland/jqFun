@@ -18,8 +18,12 @@ const unfogBtn = $('#unfogBtn');
 const sunBtn = $('#dayLink')
 const moonBtn = $('#nightLink');
 
-const accordion = $('#accordion');
-const accordionHeading = $('h4');
+const collapseIcon1 = $('#collapse-1');
+const expandIcon1 = $('#expand-1');
+
+const sectionText1 = $('#sectionText1');
+// const sectionText2 = $('#sectionText2');
+// const sectionText2 = $('#sectionText2');
 
 //////////////////// HELPER FUNCTIONS ////////////////////
 
@@ -54,23 +58,23 @@ $(function() {
     };
   });
 
-  $(function() {
-    if ($.cookie('accordion1') === 'open') {
-      setAccordion('accordian1');
-    };
+  // $(function() {
+  //   if ($.cookie('accordion1') === 'close') {
+  //     $('.accordion1').hide();
+  //   };
 
-    if ($.cookie('accordion2') === 'open') {
-      setAccordion('accordian2');
-    };
+  //   if ($.cookie('accordion2') === 'close') {
+  //     $('.accordion2').hide();
+  //   };
 
-    if ($.cookie('accordion3') === 'open') {
-      setAccordion('accordian3');
-    };
-  });
+  //   if ($.cookie('accordion3') === 'close') {
+  //     $('.accordion3').hide();
+  //   };
+  // });
 
   // hide buttons on load
 
-  hide([greenBtn, unfogBtn, sunBtn]);
+  hide([greenBtn, unfogBtn, sunBtn, expandIcon1]);
 
   // box counter
 
@@ -328,35 +332,28 @@ $(function() {
 
 // ACCORDION
 
-const setAccordion = (accordionNum) => {
-  $.cookie(accordionNum, 'open', { expires: 7 });
+const setAccordion = (status) => {
+  // alert(`${accordionNum} is now set to ${status}`)
+  $.cookie(`${this.className.text}`, status, { expires: 7 });
 };
 
-// $(function() {
-//   var heading = $('h4');
-//   var allText = $('h5');
-
-//   allText.not(':first').hide();
-
-//   heading.on('click', function() {
-//     var currentText = $(this).next();
-    
-//     if(currentText.is(':visible')) {
-//       return;
-//     }
-
-//     allText.slideUp('normal');
-//     currentText.slideDown('normal');
-//   });
-// });
-
 $(function() {
-  const heading = $('h4');
 
-  const section = $('h5');
-  section.show();
 
-  heading.on('click', function() {
-    $(this).next().toggle();
+
+
+  collapseIcon1.on('click', function(event) {
+    sectionText1.hide();
+    expandIcon1.show();
+    collapseIcon1.hide();
+    // setAccordion(`${this.className.text}`, 'close');
   });
-});
+
+  expandIcon1.on('click', function(event) {
+    sectionText1.show();
+    expandIcon1.hide();
+    collapseIcon1.show();
+    // setAccordion(`${this.className.text}`, 'open');
+  });
+
+})

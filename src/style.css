@@ -139,17 +139,33 @@ a {
 #accordion {
     width: 20rem;
     font-size: 14px;
-}
-  
-#accordion h4 {
-    padding: 0.5rem 1rem 0.5rem 1rem;
-    margin: 0 0 0.5rem 0;
-    background: lightgray;
-    color: white;
-    border-radius: 20px;
+    margin-top: -0.5rem;
 }
   
 #accordion h5 {
     font-size: 14px;
     font-weight: normal;
+}
+
+.heading-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: lightgray;
+    color: white;
+    border-radius: 20px;
+    height: 2rem;
+    margin-top: 1rem;
+}
+
+h4 {
+    padding: 0 1rem 0 0;
+    margin-top: 0.5rem;
+}
+
+.icon-expand,
+.icon-collapse {
+    height: 1rem;
+    width: 1rem;
+    margin-top: 0.5rem;
 }
