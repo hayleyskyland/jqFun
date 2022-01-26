@@ -34,6 +34,9 @@ const collapseIcon3 = $('#collapse-3');
 const expandIcon3 = $('#expand-3');
 const sectionText3 = $('#sectionText3');
 
+const expandAll = $('#expandAll');
+const collapseAll = $('#collapseAll');
+
 //////////////////// HELPER FUNCTIONS ////////////////////
 
 const hide = (elements) => {
@@ -89,6 +92,7 @@ $(function() {
     } else {
       setAccordion('accordion3', 'open', sectionText3, collapseIcon3, expandIcon3);
     }
+
   });
 
   // hide buttons on load
@@ -352,6 +356,7 @@ $(function() {
 // ACCORDION
 
 const setAccordion = (section, status, A, B, C, clicked) => {
+
   if (clicked === 'clicked') {
     $.cookie(section, status, { expires: 7 });
   }
@@ -367,7 +372,26 @@ const setAccordion = (section, status, A, B, C, clicked) => {
 
 // dyanmic hide/shows
 
-// click events
+// click events collapse/expand ALL
+
+$(function() {
+
+  const setAllSections = (status) => {
+    setAccordion('accordion1', status, sectionText1, collapseIcon1, expandIcon1, 'clicked');
+    setAccordion('accordion2', status, sectionText2, collapseIcon2, expandIcon2, 'clicked');
+    setAccordion('accordion3', status, sectionText3, collapseIcon3, expandIcon3, 'clicked');
+  }
+
+  collapseAll.on('click', function() {
+    setAllSections('close');
+  });
+
+  expandAll.on('click', function() {
+    setAllSections('open');
+  });
+})
+
+// click events section 1
 
 $(function() {
   collapseIcon1.on('click', function() {
@@ -379,6 +403,8 @@ $(function() {
   });
 })
 
+// click events section 2
+
 $(function() {
   collapseIcon2.on('click', function() {
     setAccordion('accordion2', 'close', sectionText2, collapseIcon2, expandIcon2, 'clicked');
@@ -388,6 +414,8 @@ $(function() {
     setAccordion('accordion2', 'open', sectionText2, collapseIcon2, expandIcon2, 'clicked');
   });
 })
+
+// click events section 3
 
 $(function() {
   collapseIcon3.on('click', function() {
