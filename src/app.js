@@ -350,44 +350,45 @@ $(function() {
 // ACCORDION
 
 const setAccordion = (section, status) => {
-  // alert(`${accordionNum} is now set to ${status}`)
   $.cookie(section, status, { expires: 7 });
 };
 
-// section 1
+// dyanmic hide/shows
+
+const hideSec = (hideThisA, hideThisB, showThis) => {
+  hide([hideThisA, hideThisB]);
+  show([showThis]);
+}
+
+const showSec = (showThisA, showThisB, hideThis) => {
+  show([showThisA, showThisB]);
+  hide([hideThis]);
+}
 
 const hideSec1 = () => {
-  hide([sectionText1, collapseIcon1]);
-  show([expandIcon1]);
+  hideSec(sectionText1, collapseIcon1, expandIcon1)
 }
 
 const showSec1 = () => {
-  show([sectionText1, collapseIcon1]);
-  hide([expandIcon1]);
+  showSec(sectionText1, collapseIcon1, expandIcon1)
 }
 
-// section 2
-
 const hideSec2 = () => {
-  hide([sectionText2, collapseIcon2]);
-  show([expandIcon2]);
+  hideSec(sectionText2, collapseIcon2, expandIcon2)
 }
 
 const showSec2 = () => {
-  show([sectionText2, collapseIcon2]);
-  hide([expandIcon2]);
+  showSec(sectionText2, collapseIcon2, expandIcon2)
 }
 
 // section 3
 
 const hideSec3 = () => {
-  hide([sectionText3, collapseIcon3]);
-  show([expandIcon3]);
+  hideSec(sectionText3, collapseIcon3, expandIcon3)
 }
 
 const showSec3 = () => {
-  show([sectionText3, collapseIcon3]);
-  hide([expandIcon3]);
+  showSec(sectionText3, collapseIcon3, expandIcon3)
 }
 
 $(function() {
