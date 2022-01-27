@@ -1,6 +1,7 @@
 //////////////////// TARGET HTML ITEMS BY ID ////////////////////
 
 const body = $('body');
+const title = $('h1');
 const box = $('#box');
 const counter = $('#counter');
 const traversal = $('#traversal');
@@ -323,7 +324,7 @@ $(function() {
 
 const setTheme = (color) => {
   body.css('background', color);
-  setColor([fogBtn, unfogBtn, box, accordionHeading, iconExpandCollapse], color);
+  setColor([title, fogBtn, unfogBtn, box, accordionHeading, iconExpandCollapse], color);
   $.cookie('theme', color, { expires: 7 });
 
   if (color === 'white') {

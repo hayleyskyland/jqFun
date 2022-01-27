@@ -12,169 +12,180 @@
   <body>
 
     <h1>jQuery Fun</h1>
-      
-    <!-- color-changing box -->
 
-    <div id='box'>
-      click anywhere in this box for exact mouse coordinates
-    </div>
+    <div class='page'>
 
-    <!-- count box fades  -->
+      <!-- link - prevent default behavior -->
 
-    <h2 id='counter'></h2>
-
-    <!-- traverse A-C in console -->
-    
-    <article id='traversal'>
-      <h3 id='letter'>A</h3>
-      <h3 id='letter'>B</h3>
-      <h3 id='letter'>C</h3>
-    </article>
-
-    <h3 id='letter'>Z</h3>
-
-    <!-- change css buttons -->
-
-    <section class='button-container'>
-      <button id='orangeBtn'> </button>
-      <button id='pinkBtn'> </button>
-      <button id='greenBtn' class='hidden'> </button>
-    </section>
-
-    <button id='fogBtn'>add fog</button>
-    <button id='unfogBtn'>remove fog</button>
-
-    <!-- paragraph - click events -->
-
-    <article id='paragraphs'>
-      <p id='p1'>paragraph1 (click)</p>
-      <p id='p2'>paragraph2 (no)</p>
-    </article>
-
-    <!-- link - prevent default behavior -->
-
-    <article>
-      <a
-        id='nightLink'
-        href='http://www.google.com'
-      >
-        <img
-          id='moon'
-          alt='Night Mode Toggle'
-          src='src/images/moon.png'
+      <article>
+        <a
+          id='nightLink'
+          href='http://www.google.com'
         >
-      </a>
+          <img
+            id='moon'
+            alt='Night Mode Toggle'
+            src='src/images/moon.png'
+          >
+        </a>
 
-      <a
-        id='dayLink'
-        href='http://www.yahoo.com'
-      >
-        <img
-          id='sun'
-          alt='Day Mode Toggle'
-          src='src/images/sun.png'
+        <a
+          id='dayLink'
+          href='http://www.yahoo.com'
         >
-      </a>
-    </article>
+          <img
+            id='sun'
+            alt='Day Mode Toggle'
+            src='src/images/sun.png'
+          >
+        </a>
+      </article>
 
-    <article>
-      <h6
-        class='icon-all'
-        id='expandAll'
-      >
-        expand all
-      </h6>
+      <div class='column-1'>
+          
+        <!-- color-changing box -->
 
-      <h6
-        class='icon-all'
-        id='collapseAll'
-      >
-        collapse all
-      </h6>
-    </article>
+        <div id='box'>
+          click anywhere in this box for exact mouse coordinates
+        </div>
 
-    <div id="accordion">
+        <!-- count box fades  -->
 
-      <div class='heading-box'>
-        <h4>section1</h4>
+        <h2 id='counter'></h2>
 
-      <h6
-        class='icon-expand-collapse'
-        id='expand-1'
-      >
-        expand
-      </h6>
+        <!-- traverse A-C in console -->
+        
+        <article id='traversal'>
+          <h3 id='letter'>A</h3>
+          <h3 id='letter'>B</h3>
+          <h3 id='letter'>C</h3>
+        </article>
 
-      <h6
-        class='icon-expand-collapse'
-        id='collapse-1'
-      >
-        collapse
-      </h6>
+        <h3 id='letter'>Z</h3>
+
+        <!-- change css buttons -->
+
+        <section class='button-container'>
+          <button id='orangeBtn'> </button>
+          <button id='pinkBtn'> </button>
+          <button id='greenBtn' class='hidden'> </button>
+        </section>
+
+        <button id='fogBtn'>add fog</button>
+        <button id='unfogBtn'>remove fog</button>
 
       </div>
 
-        <section
-          class='accordion2'
-          id='sectionText1'
-        >
-          <p>hide me</p>
-          <p>you can always show me again later</p>
-        </section>
+      <div class='column-2'>
 
-        <div class='heading-box'>
-          <h4>section2</h4>
+        <!-- paragraph - click events -->
+
+        <article id='paragraphs'>
+          <p id='p1'>paragraph1 (click)</p>
+          <p id='p2'>paragraph2 (no)</p>
+        </article>
+
+        <div id="accordion">
+
+          <article class='status'>
+            <h6
+              class='icon-all'
+              id='expandAll'
+            >
+              expand all
+            </h6>
   
+            <h6
+              class='icon-all'
+              id='collapseAll'
+            >
+              collapse all
+            </h6>
+          </article>
+
+          <div class='heading-box'>
+            <h4>section1</h4>
+
           <h6
             class='icon-expand-collapse'
-            id='expand-2'
+            id='expand-1'
           >
             expand
           </h6>
-  
+
           <h6
             class='icon-expand-collapse'
-            id='collapse-2'
+            id='collapse-1'
           >
             collapse
           </h6>
-  
-        </div>
 
-      <section
-        class='accordion2'
-        id='sectionText2'
-      >
-        <p>hide me too</p>
-        <p>if you want</p>
-      </section>
+          </div>
+
+            <section
+              class='accordion2'
+              id='sectionText1'
+            >
+              <p>collapse the above header</p>
+              <p>you expand later</p>
+            </section>
+
+            <div class='heading-box'>
+              <h4>section2</h4>
       
-      <div class='heading-box'>
-        <h4>section3</h4>
+              <h6
+                class='icon-expand-collapse'
+                id='expand-2'
+              >
+                expand
+              </h6>
+      
+              <h6
+                class='icon-expand-collapse'
+                id='collapse-2'
+              >
+                collapse
+              </h6>
+      
+            </div>
 
-      <h6
-        class='icon-expand-collapse'
-        id='expand-3'
-      >
-        expand
-      </h6>
+          <section
+            class='accordion2'
+            id='sectionText2'
+          >
+            <p>hide me too</p>
+            <p>if you want</p>
+          </section>
+          
+          <div class='heading-box'>
+            <h4>section3</h4>
 
-      <h6
-        class='icon-expand-collapse'
-        id='collapse-3'
-      >
-        collapse
-      </h6>
+          <h6
+            class='icon-expand-collapse'
+            id='expand-3'
+          >
+            expand
+          </h6>
 
+          <h6
+            class='icon-expand-collapse'
+            id='collapse-3'
+          >
+            collapse
+          </h6>
+
+          </div>
+
+          <section
+            class='accordion3'
+            id='sectionText3'
+          >
+            <p>i'm also hideable</p>
+            <p>the last state will be displayed on refresh</p>
+          </section>   
+        </div>
       </div>
-
-      <section
-        class='accordion3'
-        id='sectionText3'
-      >
-        <p>i'm also hideable</p>
-        <p>we will remember if hidden on page refresh</p>
-      </section>   
+    
     </div>
 
     <!-- import scripts -->

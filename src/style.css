@@ -2,19 +2,44 @@
 
 body {
     font-family: Arial;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
     color: gray; 
     position: relative;
     background-color: white;
+    text-align: center;
+}
+
+.page {
+    /* align-items: center; */
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.column-1,
+.column-2 {
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.column-1 {
+    width: 20rem;
 }
 
 /* heading */
 
 h1 {
-    margin: 1rem 0 0 0;
+    margin: 0 0 1rem 0;
+    height: 2.8rem;
+    background-color: pink;
+    color: white;
+    width: 100%;
+    /* padding: 10rem 1rem -1rem 1rem; */
+    padding-top: 0.5rem;
+    border-radius: 3rem;
 }
 
 /* hello world box */
@@ -30,7 +55,7 @@ h1 {
     font-weight: bold;
     border-radius: 1rem;
     font-size: 1rem;
-    margin-top: 2rem;
+    margin-top: 0.75rem;
 }
 
 /* hello world box counter */
@@ -112,7 +137,7 @@ p {
 }
 
 a {
-    padding-top: 0.5rem;
+    padding-top: 0.6rem;
 }
 
 /* day night toggle */
@@ -139,7 +164,19 @@ a {
 #accordion {
     width: 20rem;
     font-size: 14px;
-    margin-top: -0.5rem;
+    margin: 1rem 0 2.5rem 0;
+    border: 1px solid lightgray;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    text-align: center;
+    align-items: center;
+}
+
+.status {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: -0.6rem;
 }
   
 #accordion h5 {
