@@ -23,17 +23,11 @@ const accordionHeading = $('h4');
 
 const iconExpandCollapse = $('.icon-expand-collapse');
 
-const collapseIcon1 = $('#collapse-1');
-const expandIcon1 = $('#expand-1');
-const sectionText1 = $('#sectionText1');
+const collapseIcon = [$('#collapse-1'), $('#collapse-2'), $('#collapse-3')];
 
-const collapseIcon2 = $('#collapse-2');
-const expandIcon2 = $('#expand-2');
-const sectionText2 = $('#sectionText2');
+const sectionText = [$('#sectionText1'), $('#sectionText2'), $('#sectionText3')];
 
-const collapseIcon3 = $('#collapse-3');
-const expandIcon3 = $('#expand-3');
-const sectionText3 = $('#sectionText3');
+const expandIcon = [$('#expand-1'), $('#expand-2'), $('#expand-3')];
 
 const expandAll = $('#expandAll');
 const collapseAll = $('#collapseAll');
@@ -73,25 +67,25 @@ $(function() {
 
   $(function() {
     if ($.cookie('accordion1') ==  'close') {
-      setAccordion('accordion1', 'close', sectionText1, collapseIcon1, expandIcon1);
+      setAccordion('accordion1', 'close', 0);
     } else {
-      setAccordion('accordion1', 'open', sectionText1, collapseIcon1, expandIcon1);
+      setAccordion('accordion1', 'open', 0);
     }
   });
 
   $(function() {
     if ($.cookie('accordion2') ==  'close') {
-      setAccordion('accordion3', 'close', sectionText2, collapseIcon2, expandIcon2);
+      setAccordion('accordion3', 'close', 1);
     } else {
-      setAccordion('accordion2', 'open', sectionText2, collapseIcon2, expandIcon2);
+      setAccordion('accordion2', 'open', 1);
     }
   });
 
   $(function() {
     if ($.cookie('accordion3') ==  'close') {
-      setAccordion('accordion3', 'close', sectionText3, collapseIcon3, expandIcon3);
+      setAccordion('accordion3', 'close', 2);
     } else {
-      setAccordion('accordion3', 'open', sectionText3, collapseIcon3, expandIcon3);
+      setAccordion('accordion3', 'open', 2);
     }
 
   });
@@ -356,18 +350,18 @@ $(function() {
 
 // ACCORDION
 
-const setAccordion = (section, status, A, B, C, clicked) => {
+const setAccordion = (section, status, num, clicked) => {
 
   if (clicked === 'clicked') {
     $.cookie(section, status, { expires: 7 });
   }
 
   if (status === 'close') {
-    hide([A, B]);
-    show([C]);
+    hide([sectionText[num], collapseIcon[num]]);
+    show([expandIcon[num]]);
   } else {
-    show([A, B]);
-    hide([C]);
+    show([sectionText[num], collapseIcon[num]]);
+    hide([expandIcon[num]]);
   }
 };
 
@@ -378,9 +372,9 @@ const setAccordion = (section, status, A, B, C, clicked) => {
 $(function() {
 
   const setAllSections = (status) => {
-    setAccordion('accordion1', status, sectionText1, collapseIcon1, expandIcon1, 'clicked');
-    setAccordion('accordion2', status, sectionText2, collapseIcon2, expandIcon2, 'clicked');
-    setAccordion('accordion3', status, sectionText3, collapseIcon3, expandIcon3, 'clicked');
+    setAccordion('accordion1', status, 0, 'clicked');
+    setAccordion('accordion2', status, 1, 'clicked');
+    setAccordion('accordion3', status, 2, 'clicked');
   }
 
   collapseAll.on('click', function() {
@@ -395,35 +389,35 @@ $(function() {
 // click events section 1
 
 $(function() {
-  collapseIcon1.on('click', function() {
-    setAccordion('accordion1', 'close', sectionText1, collapseIcon1, expandIcon1, 'clicked');
+  collapseIcon[0].on('click', function() {
+    setAccordion('accordion1', 'close', 0, 'clicked');
   });
 
-  expandIcon1.on('click', function() {
-    setAccordion('accordion1', 'open', sectionText1, collapseIcon1, expandIcon1, 'clicked');
+  expandIcon[0].on('click', function() {
+    setAccordion('accordion1', 'open', 0, 'clicked');
   });
 })
 
 // click events section 2
 
 $(function() {
-  collapseIcon2.on('click', function() {
-    setAccordion('accordion2', 'close', sectionText2, collapseIcon2, expandIcon2, 'clicked');
+  collapseIcon[1].on('click', function() {
+    setAccordion('accordion2', 'close', 1, 'clicked');
   });
 
-  expandIcon2.on('click', function() {
-    setAccordion('accordion2', 'open', sectionText2, collapseIcon2, expandIcon2, 'clicked');
+  expandIcon[1].on('click', function() {
+    setAccordion('accordion2', 'open', 1, 'clicked');
   });
 })
 
 // click events section 3
 
 $(function() {
-  collapseIcon3.on('click', function() {
-    setAccordion('accordion3', 'close', sectionText3, collapseIcon3, expandIcon3, 'clicked');
+  collapseIcon[2].on('click', function() {
+    setAccordion('accordion3', 'close', 2, 'clicked');
   });
 
-  expandIcon3.on('click', function() {
-    setAccordion('accordion3', 'open', sectionText3, collapseIcon3, expandIcon3, 'clicked');
+  expandIcon[2].on('click', function() {
+    setAccordion('accordion3', 'open', 2,'clicked');
   });
 })
