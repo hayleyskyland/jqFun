@@ -32,10 +32,6 @@ const expandIcon = [$('#expand0'), $('#expand1'), $('#expand2')];
 const expandAll = $('#expandAll');
 const collapseAll = $('#collapseAll');
 
-// animations
-
-const animation = $('#animation');
-const animatedText = $('#animatedText');
 
 
 //////////////////// HELPER FUNCTIONS ////////////////////
@@ -403,29 +399,3 @@ $(function() {
   setOneSection(expandIcon, 'open', 2)
 
 })
-
-
-// animations
-
-// animatedText.animate(
-//   {
-//     // use any following lines to animate
-//       // user `-=` to make it get smaller instead
-//     // 'height': 500
-//     // 'height': '+=200px'
-//     'height' : '+=20%' 
-//   }, {
-//     'duration': 500,
-//     'easing': 'linear',
-//     'complete':  function() { console.log('finished!'); }
-//   }
-// );
-
-// $(function() {
-//   animatedText
-//     .animate({ 'height' : 300 })
-//     .fadeOut()
-//     .show(500)
-//     .animate({ 'width' : 100 })
-//     .css('background', 'yellow');
-// });

@@ -17,15 +17,15 @@ body {
     flex-wrap: wrap;
 }
 
-.column-1,
-.column-2 {
+.column1,
+.column2 {
     text-align: center;
     align-items: center;
     display: flex;
     flex-direction: column;
 }
 
-.column-1 {
+.column1 {
     width: 20rem;
 }
 
