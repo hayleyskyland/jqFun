@@ -442,26 +442,41 @@ $(function() {
 
 //////////////////// AJAX ////////////////////
 
-// working test
+// working tests
 
-var json = '{ "person" : { "age" : 20, "name" : "Jack" } }';
+const json = '{ "person" : { "age" : 20, "name" : "Jack" } }';
 
-var parsed = JSON.parse(json);
+const parsed = JSON.parse(json);
 
 console.log(parsed);
 console.log(parsed.person);
 console.log(parsed.person["age"]);
 
-// error test
-  // doesn't work, because `person` needs to be in quotes
+// error tests
 
-var invalid = '{ person: "Jack" }';
+const invalid = '{ person: "Jack" }';
 
-// var invalidParsed = JSON.parse(invalid);
+// doesn't work, because `person` needs to be in quotes
+// const invalidParsed = JSON.parse(invalid);
 // console.log(invalidParsed)
 
-  // does work, because we're changing it into a string
+// does work, because we're changing it into a string
 
-var invalidStringified = JSON.stringify(invalid).split("\\").join("")
+const invalidStringified = JSON.stringify(invalid).split("\\").join("")
 
 console.log(invalidStringified)
+
+// ajax
+
+$("div").addClass("foo");
+
+$.ajax({
+  "url": "https://www.google.com/",
+  //more settings here
+});
+
+// update confirmation for testing
+
+$(function() {
+  body.css("background", "lightyellow")
+})
