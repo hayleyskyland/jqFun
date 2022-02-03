@@ -442,7 +442,26 @@ $(function() {
 
 //////////////////// AJAX ////////////////////
 
+// working test
+
 var json = '{ "person" : { "age" : 20, "name" : "Jack" } }';
 
 var parsed = JSON.parse(json);
+
 console.log(parsed);
+console.log(parsed.person);
+console.log(parsed.person["age"]);
+
+// error test
+  // doesn't work, because `person` needs to be in quotes
+
+var invalid = '{ person: "Jack" }';
+
+// var invalidParsed = JSON.parse(invalid);
+// console.log(invalidParsed)
+
+  // does work, because we're changing it into a string
+
+var invalidStringified = JSON.stringify(invalid).split("\\").join("")
+
+console.log(invalidStringified)
