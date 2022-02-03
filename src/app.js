@@ -198,16 +198,17 @@ $(function() {
 
   // invoke logs
 
-  $(function() {
-    console.log("***** COUNT UP *****");
-    countUp();
+  // $(function() {
+  //   console.log("***** COUNT UP *****");
+  //   countUp();
 
-    console.log("***** FIRST & LAST LETTERS *****");
-    logFirstAndLastLetters();
+  //   console.log("***** FIRST & LAST LETTERS *****");
+  //   logFirstAndLastLetters();
 
-    console.log("***** CHILDREN & SIBLINGS *****");
-    logChildrenAndSiblings();
-  });
+  //   console.log("***** CHILDREN & SIBLINGS *****");
+  //   logChildrenAndSiblings();
+  // });
+
 });
 
 
@@ -433,3 +434,12 @@ $(function() {
   accordionCookieCall("accordion2", 2)
 
 });
+
+
+
+//////////////////// AJAX ////////////////////
+
+var json = '{ "person" : { "age" : 20, "name" : "Jack" } }';
+
+var parsed = JSON.parse(json);
+console.log(parsed);
