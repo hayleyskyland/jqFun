@@ -1,0 +1,7 @@
+{
+  "kitties": [
+    { "name": "Charmmykitty", "age" : 8 },
+    { "name": "Embercat", "age": 2 },
+    { "name": "Kittay", "age": 13 }
+  ]
+}

@@ -442,47 +442,68 @@ $(function() {
 
 //////////////////// AJAX ////////////////////
 
-// working tests
+// working example
 
 const json = '{ "person" : { "age" : 20, "name" : "Jack" } }';
-
 const parsed = JSON.parse(json);
+// console.log(parsed);
+// console.log(parsed.person);
+// console.log(parsed.person["age"]);
 
-console.log(parsed);
-console.log(parsed.person);
-console.log(parsed.person["age"]);
-
-// error tests
+// solving errors:
 
 const invalid = '{ person: "Jack" }';
 
-// doesn't work, because `person` needs to be in quotes
+// a) error, because `person` needs to be in quotes
+
 // const invalidParsed = JSON.parse(invalid);
 // console.log(invalidParsed)
 
-// does work, because we're changing it into a string
+// b) fixed, because we're changing it into a string
 
 const invalidStringified = JSON.stringify(invalid).split("\\").join("")
+// console.log(invalidStringified)
 
-console.log(invalidStringified)
-
-// ajax
+// json from from url
 
 $("div").addClass("foo");
 
 $.ajax({"url" : 'https://jsonplaceholder.typicode.com/posts'})
   // if call successful
-  .done(function(data){
-    // console.log(data)
+.done(function(data){
+  // console.log(data)
+})
+// if call unsuccessful
+.fail(function(jqXHR, textStatus, errorThrown){
+  // console.log(errorThrown)
+})
+// runs for all
+.always(function(){
+  // console.log('always success')
+});
+
+// json from local file
+
+$(function() {
+  $.ajax({
+    "url": "/src/kitties.json",
+    "type": "get",
+    "dataType": "json",
   })
-  // if call unsuccessful
-  .fail(function(jqXHR, textStatus, errorThrown){
-    // console.log(errorThrown)
-  })
-  // runs for all
-  .always(function(){
-    console.log('always success')
+  .done(function(results){
+    console.log(results);
   });
+});
+
+
+
+
+
+
+
+
+
+
 
 // update confirmation for testing
 
