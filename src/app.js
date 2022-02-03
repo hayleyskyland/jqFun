@@ -359,10 +359,10 @@ $(function() {
 
 // dynamic hide/show for one section & all sections
 
-const setAccordion = (status, num, clicked) => {
+const setAccordion = (accordion, status, num, clicked) => {
 
   if (clicked === 'clicked') {
-    $.cookie(accordion[num], status, { expires: 7 });
+    $.cookie(accordion, status, { expires: 7 });
   }
 
   if (status === 'close') {
@@ -380,9 +380,9 @@ const setAccordion = (status, num, clicked) => {
 $(function() {
 
   const setAllSections = (status) => {
-    setAccordion(status, 0, 'clicked');
-    setAccordion(status, 1, 'clicked');
-    setAccordion(status, 2, 'clicked');
+    setAccordion('accordion0', status, 0, 'clicked');
+    setAccordion('accordion1', status, 1, 'clicked');
+    setAccordion('accordion2', status, 2, 'clicked');
   }
 
   collapseExpandAll = (btn, status) => {
@@ -399,20 +399,20 @@ $(function() {
 
 $(function() {
 
-  const setOneSection = (btn, status, num) => {
+  const setOneSection = (accordion, btn, status, num) => {
     btn[num].on('click', function() {
-      setAccordion(status, num, 'clicked');
+      setAccordion(accordion, status, num, 'clicked');
     })
   }
 
-  setOneSection(collapseIcon, 'close', 0)
-  setOneSection(expandIcon, 'open', 0)
+  setOneSection('accordion0', collapseIcon, 'close', 0)
+  setOneSection('accordion0', expandIcon, 'open', 0)
 
-  setOneSection(collapseIcon, 'close', 1)
-  setOneSection(expandIcon, 'open', 1)
+  setOneSection('accordion1', collapseIcon, 'close', 1)
+  setOneSection('accordion1', expandIcon, 'open', 1)
 
-  setOneSection(collapseIcon, 'close', 2)
-  setOneSection(expandIcon, 'open', 2)
+  setOneSection('accordion2', collapseIcon, 'close', 2)
+  setOneSection('accordion2', expandIcon, 'open', 2)
 
 })
 
@@ -420,17 +420,17 @@ $(function() {
 
 $(function() {
 
-  accordionCookieCall = (num) => {
-    if ($.cookie(accordion[num]) == 'close') {
-      setAccordion('close', num);
+  accordionCookieCall = (accordion, num) => {
+    if ($.cookie(accordion) == 'close') {
+      setAccordion(accordion, 'close', num);
     } else {
-      setAccordion('open', num);
+      setAccordion(accordion, 'open', num);
     }
   }
 
-  accordionCookieCall(0)
-  accordionCookieCall(1)
-  accordionCookieCall(2)
+  accordionCookieCall('accordion0', 0)
+  accordionCookieCall('accordion1', 1)
+  accordionCookieCall('accordion2', 2)
 
 });
 
