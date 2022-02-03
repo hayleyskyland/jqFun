@@ -38,13 +38,13 @@ const collapseAll = $('#collapseAll');
 
 const hide = (elements) => {
   elements.forEach(element => {
-    element.hide();
+    element.addClass('hidden');
   });
 };
 
 const show = (elements) => {
   elements.forEach(element => {
-    element.show();
+    element.removeClass('hidden');
   });
 };
 
