@@ -421,7 +421,7 @@ $(function() {
 $(function() {
 
   accordionCookieCall = (num) => {
-    if ($.cookie(accordion[num]) ==  'close') {
+    if ($.cookie(accordion[num]) == 'close') {
       setAccordion('close', num);
     } else {
       setAccordion('open', num);
