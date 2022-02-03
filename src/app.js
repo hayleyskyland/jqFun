@@ -470,13 +470,22 @@ console.log(invalidStringified)
 
 $("div").addClass("foo");
 
-$.ajax({
-  "url": "https://www.google.com/",
-  //more settings here
-});
+$.ajax({"url" : 'https://jsonplaceholder.typicode.com/posts'})
+  // if call successful
+  .done(function(data){
+    // console.log(data)
+  })
+  // if call unsuccessful
+  .fail(function(jqXHR, textStatus, errorThrown){
+    // console.log(errorThrown)
+  })
+  // runs for all
+  .always(function(){
+    console.log('always success')
+  });
 
 // update confirmation for testing
 
-$(function() {
-  body.css("background", "lightyellow")
-})
+// $(function() {
+//   body.css("background", "lightyellow")
+// })
