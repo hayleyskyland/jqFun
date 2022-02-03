@@ -123,12 +123,18 @@ $(function() {
   toggleBox(i);
 })
 
-// coordinates
+// box alert
 
 $(function() {
   box.on("click", function(event) {
     alert(`Your mouse is at X ${event.pageX} & Y ${event.pageY}.`)
   });
+});
+
+// counter alert
+
+counter.on("click", function(event) {
+  alert("This line counts how many times the above box fades.");
 });
 
 
@@ -195,6 +201,14 @@ $(function() {
       console.log("log lines 1 & 2:", articleLog)
     });
   };
+
+  // make things happen
+  
+  // click event
+
+  // h3.on("click", function() {
+  //   alert("Check console to see examples of traversing the dom.");
+  // });
 
   // invoke logs
 
@@ -318,17 +332,6 @@ $(function() {
 //////////////////// PARAGRAPHS ////////////////////
 
 $(function() {
-
-  // click text above paragraphs
-
-  counter.on("click", function(event) {
-    alert("This line counts how many times the above box fades.");
-  });
-
-  
-  h3.on("click", function() {
-    alert("Check console to see examples of traversing the dom.");
-  });
 
   // click paragraphs
 
