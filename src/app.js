@@ -1,3 +1,14 @@
+// different ways to run server:
+  // `open index.html`
+    // (no server, so no cookies)
+    // file:///Users/hwitherell/code/jqFun/index.html
+  // `http-server`
+    // (server via package)
+    // http://127.0.0.1:8080/
+  // python -m SimpleHTTPServer
+    // (server via python)
+    // http://localhost:8000/
+
 //////////////////// TARGET HTML ITEMS BY ID ////////////////////
 
 const body = $("body");
@@ -484,23 +495,68 @@ $.ajax({"url" : 'https://jsonplaceholder.typicode.com/posts'})
 
 // json from local file
 
-$(function() {
-  $.ajax({
-    "url": "/src/kitties.json",
-    "type": "get",
-    "dataType": "json",
-  })
-  .done(function(results){
-    console.log(results);
-  });
+// a) long way to write
+
+// $(function() {
+//   $.ajax({
+//     "url": "/src/kitties.json",
+//     "type": "get",
+//     "dataType": "json",
+//   })
+//   .done(function(results){
+//     console.log(results);
+//   })
+//   .fail(function(){
+//     console.log("fail", arguments);
+//  });
+// });
+
+// b) short way to write exact same thing
+
+// $(function() {
+//   $.getJSON("/src/kitties.json", function(data) {
+//     console.log(data);
+//   })
+//   .fail(function(){
+//     console.log("fail", arguments);
+//   });
+// })
+
+// jqXHR object
+
+// a) wrong way to write
+
+// $.ajax({
+//   "url": "/someUrl",
+//   "success": function() {}
+// });
+
+// console.log(req)
+
+// b) better way to write
+
+const jqXHR = $.ajax({
+  "url": "/src/kitties.json"
 });
 
+jqXHR
+  .done(function() {})
+  .fail(jqXHR, status)
+  .always(function() {})
 
+// console.log(jqXHR)
 
+// api call
 
+$(function() {
+  const req = $.ajax({
+    url: "http://api.tvmaze.com/shows/396/episodes"
+  });
+  req.done(function(data) {
+    console.log(data);
+  });
 
-
-
+});
 
 
 
