@@ -19,18 +19,24 @@ const unfogBtn = $('#unfogBtn');
 const sunBtn = $('#dayLink')
 const moonBtn = $('#nightLink');
 
+// accordion
+
 const accordionHeading = $('h4');
 
 const iconExpandCollapse = $('.icon-expand-collapse');
 
-const collapseIcon = [$('#collapse-1'), $('#collapse-2'), $('#collapse-3')];
-
-const sectionText = [$('#sectionText1'), $('#sectionText2'), $('#sectionText3')];
-
-const expandIcon = [$('#expand-1'), $('#expand-2'), $('#expand-3')];
+const collapseIcon = [$('#collapse0'), $('#collapse1'), $('#collapse2')];
+const sectionText = [$('#sectionText0'), $('#sectionText1'), $('#sectionText2')];
+const expandIcon = [$('#expand0'), $('#expand1'), $('#expand2')];
 
 const expandAll = $('#expandAll');
 const collapseAll = $('#collapseAll');
+
+// animations
+
+const animation = $('#animation');
+const animatedText = $('#animatedText');
+
 
 //////////////////// HELPER FUNCTIONS ////////////////////
 
@@ -52,53 +58,15 @@ const setColor = (elements, colorVar) => {
   });
 };
 
-//////////////////// LOAD FUNCTION ////////////////////
-// this 1st function is invoked on load, basically a build-in `onReady`
-
-$(function() {
-
-  // cookies
-
-  $(function() {
-    if ($.cookie('theme') === 'black') {
-      setTheme('black');
-    };
-  });
-
-  $(function() {
-    if ($.cookie('accordion1') ==  'close') {
-      setAccordion('accordion1', 'close', 0);
-    } else {
-      setAccordion('accordion1', 'open', 0);
-    }
-  });
-
-  $(function() {
-    if ($.cookie('accordion2') ==  'close') {
-      setAccordion('accordion3', 'close', 1);
-    } else {
-      setAccordion('accordion2', 'open', 1);
-    }
-  });
-
-  $(function() {
-    if ($.cookie('accordion3') ==  'close') {
-      setAccordion('accordion3', 'close', 2);
-    } else {
-      setAccordion('accordion3', 'open', 2);
-    }
-
-  });
-
   // hide buttons on load
 
   hide([greenBtn, unfogBtn, sunBtn]);
 
-  // box counter
+  // box (including counter & mouse coordinates)
 
   $(function() {
     let i = 0;
-    counter.text('fadetoggle: ' + (i+1));
+    counter.text('fadetoggle: ' + (i+1))
 
     const toggleBox = (i) => {
       box.fadeToggle(1500, function() {
@@ -106,13 +74,19 @@ $(function() {
 
         if(i < 4) {
           counter.text('fadetoggles: ' + (i+1));
-          toggleBox(i);
+          toggleBox(i)
         };
       });
     };
 
     toggleBox(i);
   })
+
+  $(function() {
+    box.on('click', function(event) {
+      alert(`Your mouse is at X ${event.pageX} & Y ${event.pageY}.`)
+    });
+  });
 
   // traversal logs
 
@@ -190,17 +164,6 @@ $(function() {
       logChildrenAndSiblings();
     });
   });
-});
-
-//////////////////// EVENTS - ALERTS ////////////////////
-
-// mouse coordinates
-
-$(function() {
-  box.on('click', function(event) {
-    alert(`Your mouse is at X ${event.pageX} & Y ${event.pageY}.`);
-  });
-});
 
 // click text
 
@@ -291,7 +254,17 @@ $(function() {
 $(function() {
   const animateFogBtn = (elements) => {
     elements.forEach(btn => {
-      btn.animate({'width': 200}, 4000);
+      // grow 1
+      btn.animate({ 'width': 200 }, 4000)
+      .animate({ 'width' : 175 })
+      // grow 2
+      .animate({ 'width': 200 }, 1000)
+      .animate({ 'width' : 100 }, 1000)
+      // grow 3
+      .animate({ 'width': 200 }, 3000)
+      .animate({ 'width' : 175 })
+      // grow 4
+      .animate({'width': 200}, 1000)
     });
   };
 
@@ -348,12 +321,18 @@ $(function() {
   });
 });
 
+$(function() {
+  if ($.cookie('theme') === 'black') {
+    setTheme('black');
+  };
+});
+
 // ACCORDION
 
-const setAccordion = (section, status, num, clicked) => {
+const setAccordion = (status, num, clicked) => {
 
   if (clicked === 'clicked') {
-    $.cookie(section, status, { expires: 7 });
+    $.cookie(accordion[num], status, { expires: 7 });
   }
 
   if (status === 'close') {
@@ -363,7 +342,24 @@ const setAccordion = (section, status, num, clicked) => {
     show([sectionText[num], collapseIcon[num]]);
     hide([expandIcon[num]]);
   }
+
 };
+
+$(function() {
+
+  accordionCookieCall = (num) => {
+    if ($.cookie(accordion[num]) ==  'close') {
+      setAccordion('close', num);
+    } else {
+      setAccordion('open', num);
+    }
+  }
+
+  accordionCookieCall(0)
+  accordionCookieCall(1)
+  accordionCookieCall(2)
+
+});
 
 // dyanmic hide/shows
 
@@ -372,52 +368,64 @@ const setAccordion = (section, status, num, clicked) => {
 $(function() {
 
   const setAllSections = (status) => {
-    setAccordion('accordion1', status, 0, 'clicked');
-    setAccordion('accordion2', status, 1, 'clicked');
-    setAccordion('accordion3', status, 2, 'clicked');
+    setAccordion(status, 0, 'clicked');
+    setAccordion(status, 1, 'clicked');
+    setAccordion(status, 2, 'clicked');
   }
 
-  collapseAll.on('click', function() {
-    setAllSections('close');
-  });
+  collapseExpandAll = (btn, status) => {
+    btn.on('click', function() {
+      setAllSections(status);
+    });
+  }
 
-  expandAll.on('click', function() {
-    setAllSections('open');
-  });
+  collapseExpandAll(collapseAll, 'close')
+  collapseExpandAll(expandAll, 'open')
 })
 
 // click events section 1
 
 $(function() {
-  collapseIcon[0].on('click', function() {
-    setAccordion('accordion1', 'close', 0, 'clicked');
-  });
 
-  expandIcon[0].on('click', function() {
-    setAccordion('accordion1', 'open', 0, 'clicked');
-  });
+  const setOneSection = (btn, status, num) => {
+    btn[num].on('click', function() {
+      setAccordion(status, num, 'clicked');
+    })
+  }
+
+  setOneSection(collapseIcon, 'close', 0)
+  setOneSection(expandIcon, 'open', 0)
+
+  setOneSection(collapseIcon, 'close', 1)
+  setOneSection(expandIcon, 'open', 1)
+
+  setOneSection(collapseIcon, 'close', 2)
+  setOneSection(expandIcon, 'open', 2)
+
 })
 
-// click events section 2
 
-$(function() {
-  collapseIcon[1].on('click', function() {
-    setAccordion('accordion2', 'close', 1, 'clicked');
-  });
+// animations
 
-  expandIcon[1].on('click', function() {
-    setAccordion('accordion2', 'open', 1, 'clicked');
-  });
-})
+// animatedText.animate(
+//   {
+//     // use any following lines to animate
+//       // user `-=` to make it get smaller instead
+//     // 'height': 500
+//     // 'height': '+=200px'
+//     'height' : '+=20%' 
+//   }, {
+//     'duration': 500,
+//     'easing': 'linear',
+//     'complete':  function() { console.log('finished!'); }
+//   }
+// );
 
-// click events section 3
-
-$(function() {
-  collapseIcon[2].on('click', function() {
-    setAccordion('accordion3', 'close', 2, 'clicked');
-  });
-
-  expandIcon[2].on('click', function() {
-    setAccordion('accordion3', 'open', 2,'clicked');
-  });
-})
+// $(function() {
+//   animatedText
+//     .animate({ 'height' : 300 })
+//     .fadeOut()
+//     .show(500)
+//     .animate({ 'width' : 100 })
+//     .css('background', 'yellow');
+// });
