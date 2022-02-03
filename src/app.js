@@ -433,7 +433,3 @@ $(function() {
   accordionCookieCall('accordion2', 2)
 
 });
-
-// test
-
-body.css('background', 'lightyellow');
