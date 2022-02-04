@@ -87,7 +87,7 @@ const setTheme = (color) => {
 
 $(function() {
 
-  hide([sunBtn])
+  hide([sunBtn]);
 
   $(function() {
     sunBtn.on("click", function(event) {
@@ -118,7 +118,7 @@ $(function() {
 
 $(function() {
   let i = 0;
-  counter.text("fadetoggle: " + (i+1))
+  counter.text("fadetoggle: " + (i+1));
 
   const toggleBox = (i) => {
     box.fadeToggle(1500, function() {
@@ -126,19 +126,19 @@ $(function() {
 
       if(i < 4) {
         counter.text("fadetoggles: " + (i+1));
-        toggleBox(i)
+        toggleBox(i);
       };
     });
   };
 
   toggleBox(i);
-})
+});
 
 // box alert
 
 $(function() {
   box.on("click", function(event) {
-    alert(`Your mouse is at X ${event.pageX} & Y ${event.pageY}.`)
+    alert(`Your mouse is at X ${event.pageX} & Y ${event.pageY}.`);
   });
 });
 
@@ -180,8 +180,8 @@ $(function() {
   };
 
   const logFirstAndLastLetters = () => {
-    console.log("first letter:", h3First.text())
-    console.log("last letter :", h3Last.text())
+    console.log("first letter:", h3First.text());
+    console.log("last letter :", h3Last.text());
   };
 
   const logChildrenAndSiblings = () => {
@@ -203,7 +203,7 @@ $(function() {
         };
       };
 
-      console.log("log line 1:", articleLog, "-", allLogsMatch())
+      console.log("log line 1:", articleLog, "-", allLogsMatch());
     });
 
     $(function() {
@@ -217,22 +217,17 @@ $(function() {
   
   // click event
 
-  // h3.on("click", function() {
-  //   alert("Check console to see examples of traversing the dom.");
-  // });
+  h3.on("click", function() {
+    alert("Check console to see examples of traversing the dom & AJAX fun.");
+  });
 
   // invoke logs
 
-  // $(function() {
-  //   console.log("***** COUNT UP *****");
-  //   countUp();
-
-  //   console.log("***** FIRST & LAST LETTERS *****");
-  //   logFirstAndLastLetters();
-
-  //   console.log("***** CHILDREN & SIBLINGS *****");
-  //   logChildrenAndSiblings();
-  // });
+  $(function() {
+    countUp();
+    logFirstAndLastLetters();
+    logChildrenAndSiblings();
+  });
 
 });
 
@@ -248,7 +243,7 @@ $(function() {
 
   // hover animation
 
-  $(function(){
+  $(function() {
     const hoverHere = (elements) => {
       elements.forEach(btn => {
         btn.on("mouseenter", function() {
@@ -264,7 +259,7 @@ $(function() {
 
   // click events
 
-  $(function(){
+  $(function() {
     orangeBtn.click(function() {
       h3.css("color", "orange");
       hide([orangeBtn]);
@@ -272,7 +267,7 @@ $(function() {
     });
   });
 
-  $(function(){
+  $(function() {
     pinkBtn.click(function() {
       setColor([h3], "lightpink");
       hide([pinkBtn]);
@@ -280,7 +275,7 @@ $(function() {
     });
   });
 
-  $(function(){
+  $(function() {
     greenBtn.click(function() {
       setColor([h3], "olivedrab");
       hide([greenBtn]);
@@ -312,15 +307,15 @@ $(function() {
       .animate({ "width": 200 }, 3000)
       .animate({ "width": 175 })
       // grow 4
-      .animate({ "width": 200}, 1000)
+      .animate({ "width": 200}, 1000);
     });
   };
 
-  animateFogBtn([fogBtn, unfogBtn])
+  animateFogBtn([fogBtn, unfogBtn]);
 
   // click events
 
-  $(function(){
+  $(function() {
     fogBtn.click(function() {
       body.addClass("fog");
       hide([fogBtn]);
@@ -328,7 +323,7 @@ $(function() {
     });
   });
 
-  $(function(){
+  $(function() {
     unfogBtn.click(function() {
       body.removeClass("fog");
       show([fogBtn]);
@@ -386,7 +381,7 @@ const setAccordion = (accordion, status, num, clicked) => {
   } else {
     show([sectionText[num], collapseIcon[num]]);
     hide([expandIcon[num]]);
-  }
+  };
 
 };
 
@@ -404,11 +399,11 @@ $(function() {
     btn.on("click", function() {
       setAllSections(status);
     });
-  }
+  };
 
-  collapseExpandAll(collapseAll, "close")
-  collapseExpandAll(expandAll, "open")
-})
+  collapseExpandAll(collapseAll, "close");
+  collapseExpandAll(expandAll, "open");
+});
 
 // set one section
 
@@ -417,19 +412,18 @@ $(function() {
   const setOneSection = (accordion, btn, status, num) => {
     btn[num].on("click", function() {
       setAccordion(accordion, status, num, "clicked");
-    })
-  }
+    });
+  };
 
-  setOneSection("accordion0", collapseIcon, "close", 0)
-  setOneSection("accordion0", expandIcon, "open", 0)
+  setOneSection("accordion0", collapseIcon, "close", 0);
+  setOneSection("accordion0", expandIcon, "open", 0);
 
-  setOneSection("accordion1", collapseIcon, "close", 1)
-  setOneSection("accordion1", expandIcon, "open", 1)
+  setOneSection("accordion1", collapseIcon, "close", 1);
+  setOneSection("accordion1", expandIcon, "open", 1);
 
-  setOneSection("accordion2", collapseIcon, "close", 2)
-  setOneSection("accordion2", expandIcon, "open", 2)
-
-})
+  setOneSection("accordion2", collapseIcon, "close", 2);
+  setOneSection("accordion2", expandIcon, "open", 2);
+});
 
 // call cookies
 
@@ -440,129 +434,113 @@ $(function() {
       setAccordion(accordion, "close", num);
     } else {
       setAccordion(accordion, "open", num);
-    }
-  }
+    };
+  };
 
-  accordionCookieCall("accordion0", 0)
-  accordionCookieCall("accordion1", 1)
-  accordionCookieCall("accordion2", 2)
-
+  accordionCookieCall("accordion0", 0);
+  accordionCookieCall("accordion1", 1);
+  accordionCookieCall("accordion2", 2);
 });
 
 
 
 //////////////////// AJAX ////////////////////
 
-// working example
+// object from inline code
 
-const json = '{ "person" : { "age" : 20, "name" : "Jack" } }';
-const parsed = JSON.parse(json);
-// console.log(parsed);
-// console.log(parsed.person);
-// console.log(parsed.person["age"]);
+const dorito = () => {
+  const dorito = '{ "dorito" : { "texture" : "crispy", "isTasty": true } }';
+  const parsedDorito = JSON.parse(dorito);
+  console.log(parsedDorito);
+};
 
-// solving errors:
+const getTitleFromAPI = (element) => {
+  const request = $.ajax({
+    url: "https://jsonplaceholder.typicode.com/posts",
+    // dataType: "json"
+  });
 
-const invalid = '{ person: "Jack" }';
+  request.done(function(data) {
+    console.log(data[element].title)
+  })
+  .fail(function(request, textStatus, errorThrown) {
+    console.log(errorThrown);
+  })
+  .always(function() {});
+};
 
-// a) error, because `person` needs to be in quotes
+// object from api
 
-// const invalidParsed = JSON.parse(invalid);
-// console.log(invalidParsed)
+const kittyNames = () => {
 
-// b) fixed, because we're changing it into a string
+  // dynamic name-finding iterator
 
-const invalidStringified = JSON.stringify(invalid).split("\\").join("")
-// console.log(invalidStringified)
+  const getKittyNames = (data) => data.kitties.map(kitty => {
+    return kitty.name;
+  });
 
-// json from from url
+  // best ways to write
 
-$("div").addClass("foo");
+  const bestWay1 = () => {
+    const request = $.ajax({
+      "url": "/src/kitties.json",
+      "type": "get",
+      "dataType": "json",
+    });
 
-$.ajax({"url" : 'https://jsonplaceholder.typicode.com/posts'})
-  // if call successful
-.done(function(data){
-  // console.log(data)
-})
-// if call unsuccessful
-.fail(function(jqXHR, textStatus, errorThrown){
-  // console.log(errorThrown)
-})
-// runs for all
-.always(function(){
-  // console.log('always success')
-});
+    request.done(function(data) {
+      console.log(getKittyNames(data));
+    })
+    .fail(function() {
+      console.log("fail", arguments)
+      .always(function() {});
+    });
+  }
 
-// json from local file
+  const bestWay2 = () => {
+    const jqXHR = $.ajax({
+      "url": "/src/kitties.json"
+    });
 
-// a) long way to write
+    jqXHR.done(function(data) {
+      console.log(getKittyNames(data));
+    })
+    .fail(jqXHR, status)
+    .always(function() {});
+  };
 
-// $(function() {
-//   $.ajax({
-//     "url": "/src/kitties.json",
-//     "type": "get",
-//     "dataType": "json",
-//   })
-//   .done(function(results){
-//     console.log(results);
-//   })
-//   .fail(function(){
-//     console.log("fail", arguments);
-//  });
-// });
+  // b) bad ways to write
 
-// b) short way to write exact same thing
+  const badWay1 = () => {
+    const request = $.getJSON("/src/kitties.json", function(data) {
+      console.log(getKittyNames(data));
+    })
 
-// $(function() {
-//   $.getJSON("/src/kitties.json", function(data) {
-//     console.log(data);
-//   })
-//   .fail(function(){
-//     console.log("fail", arguments);
-//   });
-// })
+    request.fail(function() {
+      console.log("fail", arguments)
+      .always(function() {});
+    }); 
+  };
 
-// jqXHR object
+  const badWay2 = () => {
+    const request = $.ajax({
+      "url": "/src/kitties.json",
+      "success": function(data) {
+        console.log(getKittyNames(data));
+      }
+    });
+  };
+  
+  bestWay1();
+  bestWay2();
+  badWay1();
+  badWay2();
+;}
 
-// a) wrong way to write
-
-// $.ajax({
-//   "url": "/someUrl",
-//   "success": function() {}
-// });
-
-// console.log(req)
-
-// b) better way to write
-
-const jqXHR = $.ajax({
-  "url": "/src/kitties.json"
-});
-
-jqXHR
-  .done(function() {})
-  .fail(jqXHR, status)
-  .always(function() {})
-
-// console.log(jqXHR)
-
-// api call
+// invoke ajax functions
 
 $(function() {
-  const req = $.ajax({
-    url: "http://api.tvmaze.com/shows/396/episodes"
-  });
-  req.done(function(data) {
-    console.log(data);
-  });
-
+  dorito();
+  getTitleFromAPI(13);
+  kittyNames();
 });
-
-
-
-
-// update confirmation for testing
-
-// $(function() {
-//   body.css("background", "lightyellow")
-// })
